@@ -1,9 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=12 format=3 uid="uid://be8ulv2ooh3ob"]
 
-[ext_resource type="Script" path="res://Scripts/Resources.gd" id="1_5tb4o"]
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
-[ext_resource type="Script" path="res://Scripts/UIManager.gd" id="2_eqmjs"]
 [ext_resource type="Texture2D" uid="uid://u55l12n8ougv" path="res://Assets/UI/PanelBackground.png" id="3_otmo8"]
 [ext_resource type="Texture2D" uid="uid://c6ef3w2nvexta" path="res://Assets/UI/money.png" id="4_5ljrx"]
 [ext_resource type="Texture2D" uid="uid://svl1x5wxhxc5" path="res://Assets/UI/kobold.png" id="5_kapuh"]
@@ -42,7 +40,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Resources" type="Node" parent="Game"]
-script = ExtResource("1_5tb4o")
 
 [node name="TopUI" type="Control" parent="Game"]
 visible = false
@@ -51,7 +48,6 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
-script = ExtResource("2_eqmjs")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game/TopUI"]
 layout_mode = 1
