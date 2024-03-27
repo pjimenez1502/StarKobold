@@ -1,0 +1,52 @@
+[gd_scene load_steps=14 format=3 uid="uid://pacq5h67s1dm"]
+
+[ext_resource type="PackedScene" uid="uid://bboqebcdt3j7m" path="res://Assets/Models/Tiles/Cube.glb" id="1_dm230"]
+[ext_resource type="PackedScene" uid="uid://bl7ayfa4xistn" path="res://Assets/Models/Tiles/Wall.glb" id="2_7r0wt"]
+[ext_resource type="PackedScene" uid="uid://csa632bvky4em" path="res://Assets/Models/Tiles/Floor.glb" id="3_d5y2a"]
+[ext_resource type="PackedScene" uid="uid://dop1o72od7uv" path="res://Assets/Models/Tiles/Wall_Corner_Exterior.glb" id="4_eh2c3"]
+[ext_resource type="PackedScene" uid="uid://jy6n21o51tgc" path="res://Assets/Models/Tiles/Helm.glb" id="5_fqcld"]
+[ext_resource type="PackedScene" uid="uid://c2v7ebabjldx5" path="res://Assets/Models/Tiles/Thruster_small.glb" id="6_834bc"]
+[ext_resource type="PackedScene" uid="uid://7lkj6oj1gtem" path="res://Assets/Models/Tiles/Wall_Corner_T.glb" id="7_88xk0"]
+[ext_resource type="PackedScene" uid="uid://cl225i10wmx81" path="res://Assets/Models/Tiles/Wall_Corner_short.glb" id="7_t2l3r"]
+[ext_resource type="PackedScene" uid="uid://t86ie24fqeid" path="res://Assets/Models/Tiles/Wall_door.glb" id="8_e73w7"]
+[ext_resource type="PackedScene" uid="uid://cw2iprncivfwx" path="res://Assets/Models/Tiles/Turret.glb" id="9_2e7l5"]
+[ext_resource type="PackedScene" uid="uid://b7t4sh18jflg0" path="res://Assets/Models/Tiles/Wall_Corner_X.glb" id="10_ioq0v"]
+[ext_resource type="PackedScene" uid="uid://clss46f8cwip7" path="res://Assets/Models/Tiles/Mining_rig_1.glb" id="12_p6ckc"]
+[ext_resource type="PackedScene" uid="uid://bb6lv2rcrfnhe" path="res://Assets/Models/Tiles/Wall_Corner_short_interior.glb" id="13_70h61"]
+
+[node name="Library" type="Node3D"]
+
+[node name="Cube" parent="." instance=ExtResource("1_dm230")]
+visible = false
+
+[node name="Floor" parent="." instance=ExtResource("3_d5y2a")]
+visible = false
+
+[node name="Wall" parent="." instance=ExtResource("2_7r0wt")]
+visible = false
+
+[node name="Wall_Corner_Full" parent="." instance=ExtResource("4_eh2c3")]
+visible = false
+
+[node name="Wall_Corner_Short" parent="." instance=ExtResource("7_t2l3r")]
+visible = false
+
+[node name="Wall_Corner_X" parent="." instance=ExtResource("10_ioq0v")]
+visible = false
+
+[node name="Wall_Corner_T" parent="." instance=ExtResource("7_88xk0")]
+
+[node name="Wall_door" parent="." instance=ExtResource("8_e73w7")]
+visible = false
+
+[node name="Helm" parent="." instance=ExtResource("5_fqcld")]
+
+[node name="Thruster_small" parent="." instance=ExtResource("6_834bc")]
+visible = false
+
+[node name="Turret" parent="." instance=ExtResource("9_2e7l5")]
+visible = false
+
+[node name="Mining_rig_1" parent="." instance=ExtResource("12_p6ckc")]
+
+[node name="Wall_Corner_short_interior" parent="." instance=ExtResource("13_70h61")]

@@ -1,0 +1,8 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bwiqcqbwcm46t"]
+
+[ext_resource type="Shader" path="res://Shaders/Placing_tile_check_color.gdshader" id="1_dmkya"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_dmkya")
+shader_parameter/instance_color_01 = Color(0, 1, 0, 0.6)

@@ -1,0 +1,24 @@
+{
+  "hidden_columns": {
+    "res://Scenes/Modules/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/00_Debug_Block/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    }
+  },
+  "recent_paths": [
+    "res://Scenes/Modules/00_Debug_Block/",
+    "res://Scenes/Modules/"
+  ],
+  "table_functions": {
+    "filter": [
+      "return true"
+    ],
+    "process": [
+      "return value"
+    ]
+  }
+}

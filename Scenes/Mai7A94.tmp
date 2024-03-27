@@ -1,0 +1,177 @@
+[gd_scene load_steps=10 format=3 uid="uid://be8ulv2ooh3ob"]
+
+[ext_resource type="Script" path="res://Scripts/Resources.gd" id="1_5tb4o"]
+[ext_resource type="Texture2D" uid="uid://d2tkjr2pl20j0" path="res://Assets/Den/dragon.png" id="2_4gw7k"]
+[ext_resource type="Script" path="res://Scenes/UIManager.gd" id="2_eqmjs"]
+[ext_resource type="Texture2D" uid="uid://u55l12n8ougv" path="res://Assets/UI/PanelBackground.png" id="3_otmo8"]
+[ext_resource type="Texture2D" uid="uid://c6ef3w2nvexta" path="res://Assets/UI/money.png" id="4_5ljrx"]
+[ext_resource type="Texture2D" uid="uid://svl1x5wxhxc5" path="res://Assets/UI/kobold.png" id="5_kapuh"]
+[ext_resource type="Script" path="res://Scenes/Den.gd" id="5_w0pl2"]
+[ext_resource type="Texture2D" uid="uid://d4c5mectr6gs3" path="res://Assets/Den/mine.png" id="7_uqtuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bypjv"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
+[node name="Game" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resources" type="Node" parent="."]
+script = ExtResource("1_5tb4o")
+
+[node name="TopUI" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 36.0
+grow_horizontal = 2
+script = ExtResource("2_eqmjs")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="TopUI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_otmo8")
+region_rect = Rect2(0, 0, 36, 36)
+patch_margin_left = 12
+patch_margin_top = 12
+patch_margin_right = 12
+patch_margin_bottom = 12
+
+[node name="MarginContainer" type="MarginContainer" parent="TopUI/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_right = 32
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TopUI/NinePatchRect/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_constants/separation = 12
+
+[node name="TextureRect" type="TextureRect" parent="TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_5ljrx")
+stretch_mode = 2
+
+[node name="MoneyLabel" type="Label" parent="TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "money
+"
+
+[node name="TextureRect2" type="TextureRect" parent="TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_kapuh")
+stretch_mode = 2
+
+[node name="MoneyLabel2" type="Label" parent="TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Kobolds
+"
+
+[node name="Den" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_w0pl2")
+
+[node name="Dragon" type="Control" parent="Den"]
+anchors_preset = 0
+offset_left = 391.0
+offset_top = 159.0
+offset_right = 711.0
+offset_bottom = 351.0
+
+[node name="TextureRect" type="TextureRect" parent="Den/Dragon"]
+layout_mode = 0
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("2_4gw7k")
+
+[node name="Button" type="Button" parent="Den/Dragon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bypjv")
+
+[node name="Hatchery" type="Control" parent="Den"]
+anchors_preset = 0
+offset_left = 121.0
+offset_top = 461.0
+offset_right = 280.0
+offset_bottom = 586.0
+
+[node name="Button" type="Button" parent="Den/Hatchery"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bypjv")
+
+[node name="Mine" type="Control" parent="Den"]
+anchors_preset = 0
+offset_left = 842.0
+offset_top = 367.0
+offset_right = 1042.0
+offset_bottom = 567.0
+
+[node name="TextureRect" type="TextureRect" parent="Den/Mine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_uqtuq")
+
+[node name="MiningButton" type="Button" parent="Den/Mine"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bypjv")
+
+[node name="Dungeon" type="Control" parent="Den"]
+anchors_preset = 0
+offset_left = 913.0
+offset_top = 90.0
+offset_right = 1072.0
+offset_bottom = 215.0
+
+[node name="Button" type="Button" parent="Den/Dungeon"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxFlat_bypjv")
+
+[connection signal="pressed" from="Den/Mine/MiningButton" to="Den" method="mine_button"]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://dn7x1fpbcgh4"]
+
+[ext_resource type="Texture2D" uid="uid://ns8gtdhn4h0d" path="res://Assets/Sprites/reticle.png" id="1_jybiq"]
+
+[node name="Node3D" type="Sprite3D"]
+transform = Transform3D(3, 0, 0, 0, -1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("1_jybiq")

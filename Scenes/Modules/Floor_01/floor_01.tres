@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://2ynonui0g632"]
+
+[ext_resource type="PackedScene" uid="uid://eblqlbulxeu4" path="res://Scenes/Modules/Floor_01/floor_01.tscn" id="1_7o6ab"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Tiles Data.gd" id="1_t4g20"]
+
+[resource]
+script = ExtResource("1_t4g20")
+id = "floor_01"
+name = "Floor"
+desc = "Something to keep you grounded"
+category = 1
+object = ExtResource("1_7o6ab")
+tiles = [[0, 0]]

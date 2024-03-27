@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://ybsoskdf2jpd"]
+
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Tiles Data.gd" id="1_ekgej"]
+[ext_resource type="PackedScene" uid="uid://ch4ibty8f2jt7" path="res://Scenes/Modules/00_Debug_Block/Debug_Block.tscn" id="1_rxtd6"]
+
+[resource]
+script = ExtResource("1_ekgej")
+id = "debug"
+name = "Debug Block"
+desc = "Test"
+category = 0
+object = ExtResource("1_rxtd6")
+tiles = [[0, 0]]

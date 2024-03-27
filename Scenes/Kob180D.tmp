@@ -1,0 +1,86 @@
+[gd_scene load_steps=9 format=3 uid="uid://bftsexb11rsxo"]
+
+[ext_resource type="Script" path="res://Scripts/CharacterMovement.gd" id="1_lys7n"]
+[ext_resource type="Texture2D" uid="uid://usss87mfgl6j" path="res://Assets/Characters/kobold.png" id="1_rb2hw"]
+[ext_resource type="Script" path="res://Scripts/Navigation.gd" id="2_up1qu"]
+[ext_resource type="Script" path="res://Scripts/Input.gd" id="4_whsks"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x5sg"]
+radius = 0.4
+height = 1.2
+
+[sub_resource type="Animation" id="Animation_x6p6g"]
+resource_name = "Damaged"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0, 0, 0, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_o7oru"]
+resource_name = "Walk"
+length = 0.7
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Body")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.5, 0, 0.2, 1, 0, 0.7, 0, 0.4, 1, 0, 0.5, 0, 0.6, 1, 0, 0.7, 0, 0.8, 1, 0, 0.5, 0)
+tracks/1/type = "rotation_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Body")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, 0, 1, 0.2, 1, 0, 0, -0.087, 0.996, 0.4, 1, 0, 0, 0, 1, 0.6, 1, 0, 0, 0.087, 0.996, 0.8, 1, 0, 0, 0, 1)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_jmjv7"]
+_data = {
+"Damaged": SubResource("Animation_x6p6g"),
+"Walk": SubResource("Animation_o7oru")
+}
+
+[node name="Kobold" type="CharacterBody3D"]
+collision_layer = 5
+collision_mask = 5
+script = ExtResource("1_lys7n")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("CapsuleShape3D_3x5sg")
+
+[node name="Body" type="Sprite3D" parent="."]
+transform = Transform3D(2.99896, 0.0788108, 0, -0.0788108, 2.99896, 0, 0, 0, 3, 0, 0.530159, 0)
+texture_filter = 0
+texture = ExtResource("1_rb2hw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_jmjv7")
+}
+speed_scale = 2.0
+
+[node name="Nav" type="Node3D" parent="."]
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Nav" node_paths=PackedStringArray("character")]
+path_height_offset = 0.5
+script = ExtResource("2_up1qu")
+character = NodePath("../..")
+
+[node name="PathfindTimer" type="Timer" parent="Nav"]
+wait_time = 0.25
+autostart = true
+
+[node name="Input" type="Node" parent="."]
+script = ExtResource("4_whsks")
+
+[connection signal="timeout" from="Nav/PathfindTimer" to="." method="_on_pathfind_timeout"]
