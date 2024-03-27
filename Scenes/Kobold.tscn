@@ -1,8 +1,8 @@
 [gd_scene load_steps=9 format=3 uid="uid://bftsexb11rsxo"]
 
-[ext_resource type="Script" path="res://Scripts/CharacterMovement.gd" id="1_lys7n"]
+[ext_resource type="Script" path="res://Scripts/Player/CharacterMovement.gd" id="1_lys7n"]
 [ext_resource type="Texture2D" uid="uid://6k8q2dj3idu4" path="res://Assets/Characters/suited_kobold.png" id="2_n804x"]
-[ext_resource type="Script" path="res://Scripts/Navigation.gd" id="2_up1qu"]
+[ext_resource type="Script" path="res://Scripts/CharacterNavigation.gd" id="2_up1qu"]
 [ext_resource type="Script" path="res://Scripts/Input/KoboldInput.gd" id="4_8j4uy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x5sg"]

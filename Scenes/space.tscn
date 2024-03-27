@@ -3,7 +3,7 @@
 [ext_resource type="MeshLibrary" uid="uid://ssv78malycqc" path="res://Scenes/Tilesets/meshlibrary.tres" id="1_2lwcm"]
 [ext_resource type="PackedScene" uid="uid://bftsexb11rsxo" path="res://Scenes/Kobold.tscn" id="2_vobhq"]
 [ext_resource type="Script" path="res://Scripts/Input/CameraPivot.gd" id="3_xj0at"]
-[ext_resource type="Script" path="res://Scripts/PlayerShipMovement.gd" id="4_hyrg4"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerShipMovement.gd" id="4_hyrg4"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipInput.gd" id="5_2ag44"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/ShipEditing.gd" id="6_4y1g3"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="6_dwxkm"]

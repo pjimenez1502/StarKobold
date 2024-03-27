@@ -10,6 +10,7 @@ const PLACEMENT_CHECK_MAT = preload("res://Shaders/Placement_Check_Mat.tres")
 
 var preview_instance
 var hovered_tile : Vector3i
+var module_selected_rotation : float = 0
 
 func model_green():
 	preview_mesh.get_active_material(0).set("shader_parameter/instance_color_01", Color("00ff0099"))
@@ -48,15 +49,19 @@ func check_current_tile_free() -> bool:
 			return false
 	return true
 
-func check_current_tile_supported() -> bool:
+func check_current_tile_supported() -> bool: ##Check that module to place has something around to hold on to
 	
 	return true
-	
+
+func set_rotation(rotation_index):
+	module_selected_rotation = deg_to_rad(90 * rotation_index)
+
 func move_preview(processed_coords):
 	if !preview_mesh.mesh:
 		return
 	hovered_tile = processed_coords
 	module_placing_preview.position = hovered_tile
+	module_placing_preview.rotation = Vector3(0, module_selected_rotation, 0)
 	check_module_placement()
 
 
