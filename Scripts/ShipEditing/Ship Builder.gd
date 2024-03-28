@@ -48,12 +48,18 @@ func get_next_module_id():
 ## PLACE MODULE
 func instantiate_module(module_id, position, rotation_index):
 	var module_data = find_module_by_id(module_id)
+	
+	if !Resources_Manager.can_afford(module_data.costs):
+		print("NOT ENOUGH RESOURCES")
+		return
+		
 	var instance = module_data.object.instantiate()
 	ship_grid_map.add_child(instance)
 	instance.position = position
 	instance.rotation = Vector3(0, deg_to_rad(90*rotation_index), 0)
 	fill_occupied_tiles_from_module(module_data, position, instance)
 	
+	Resources_Manager.remove_resourcelist(module_data.costs)
 	ship_navigation_region.bake_navigation_mesh()
 
 ## REMOVE MODULE

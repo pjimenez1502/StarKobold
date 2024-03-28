@@ -1,0 +1,13 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bbfjdgurtxmyq"]
+
+[ext_resource type="Shader" path="res://Shaders/Filter_and_color.gdshader" id="1_soapk"]
+
+[resource]
+shader = ExtResource("1_soapk")
+shader_parameter/seed = 81.0
+shader_parameter/power = 0.004
+shader_parameter/speed = 1.0
+shader_parameter/saturation = 0.0
+shader_parameter/redVal = 1.0
+shader_parameter/greenVal = 1.0
+shader_parameter/blueVal = 1.0

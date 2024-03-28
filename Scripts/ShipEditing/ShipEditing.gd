@@ -91,8 +91,6 @@ func right_click():
 func left_click():
 	if !module_placer.can_place:
 		return
-	if !can_afford_module():
-		return
 	var position = ship_grid_map.local_to_map(player_ship.to_local(get_mouse_pos()))
 	ship_builder.instantiate_module(current_selected_module, position, selected_rotation_index)
 

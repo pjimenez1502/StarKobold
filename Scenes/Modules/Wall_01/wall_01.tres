@@ -11,3 +11,11 @@ desc = "Keeps space out and air in."
 category = 1
 object = ExtResource("1_8lc3h")
 tiles = [[0, 0]]
+costs = {
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"polyplastics": 0,
+"scrap": 15
+}

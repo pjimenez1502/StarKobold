@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e4s7gp3snmal"
-path="res://.godot/imported/edit.png-1c0897e05d6ba5e760f257e684e68713.ctex"
+uid="uid://svl1x5wxhxc5"
+path="res://.godot/imported/kobold.png-423e384f0c0a831136cc857d49a8e867.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/edit.png"
-dest_files=["res://.godot/imported/edit.png-1c0897e05d6ba5e760f257e684e68713.ctex"]
+source_file="res://Assets/UI/Icons/kobold.png"
+dest_files=["res://.godot/imported/kobold.png-423e384f0c0a831136cc857d49a8e867.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

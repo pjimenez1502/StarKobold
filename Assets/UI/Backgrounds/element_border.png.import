@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://u55l12n8ougv"
-path="res://.godot/imported/PanelBackground.png-eee12df1b6d547ca0fb498083387c6eb.ctex"
+uid="uid://cwdr88i0dk35l"
+path="res://.godot/imported/element_border.png-c2a3115e9abdfd921c4509ee29f2a17d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/UI/PanelBackground.png"
-dest_files=["res://.godot/imported/PanelBackground.png-eee12df1b6d547ca0fb498083387c6eb.ctex"]
+source_file="res://Assets/UI/Backgrounds/element_border.png"
+dest_files=["res://.godot/imported/element_border.png-c2a3115e9abdfd921c4509ee29f2a17d.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
