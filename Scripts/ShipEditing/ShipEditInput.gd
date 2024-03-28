@@ -15,6 +15,9 @@ var selected_rotation_index : int = 0
 ## UI to select parts and show costs / stats
 ## LeftClick to place selected part, RightClick to remove
 
+func _ready():
+	select_module("wall_01")
+
 func _physics_process(delta):
 	if !ControlFocusManager.current_control_focus == ControlFocusManager.CONTROL_FOCUS.EDIT:
 		show_module_preview(false)

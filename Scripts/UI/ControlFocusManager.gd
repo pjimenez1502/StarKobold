@@ -21,22 +21,32 @@ func switch_control_focus(new_focus : CONTROL_FOCUS):
 	
 	match new_focus:
 		CONTROL_FOCUS.KOBOLD:
+			OverlaysManager.toggle_kobold_overlay(true)
+			OverlaysManager.toggle_ship_overlay(false)
+			OverlaysManager.toggle_edit_overlay(false)
 			pass
 		CONTROL_FOCUS.SHIP:
+			OverlaysManager.toggle_kobold_overlay(false)
+			OverlaysManager.toggle_ship_overlay(true)
+			OverlaysManager.toggle_edit_overlay(false)
 			pass
 		CONTROL_FOCUS.EDIT:
+			OverlaysManager.toggle_kobold_overlay(false)
+			OverlaysManager.toggle_ship_overlay(false)
+			OverlaysManager.toggle_edit_overlay(true)
 			pass
 		CONTROL_FOCUS.MENU:
+			OverlaysManager.toggle_kobold_overlay(false)
+			OverlaysManager.toggle_ship_overlay(false)
+			OverlaysManager.toggle_edit_overlay(false)
 			pass
-			
+
 	current_control_focus = new_focus
 	FOCUS_CHANGED.emit(current_control_focus)
 	print("CURRENT CONTROL FOCUS: ", current_control_focus)
 
 func return_to_prev_focus():
-	current_control_focus = prev_control_focus
-	FOCUS_CHANGED.emit(current_control_focus)
-	print("CURRENT CONTROL FOCUS: ", current_control_focus)
+	switch_control_focus(prev_control_focus)
 
 
 

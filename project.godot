@@ -29,6 +29,7 @@ config/features=PackedStringArray("4.2", "Mobile")
 Resources_Manager="*res://Scripts/Player/PlayerResourcesManager.gd"
 ControlFocusManager="*res://Scripts/UI/ControlFocusManager.gd"
 OverlaysManager="*res://Scripts/UI/OverlaysManager.gd"
+DebugManager="*res://Scripts/UI/DebugManager.gd"
 
 [display]
 

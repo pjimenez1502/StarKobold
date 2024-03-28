@@ -11,7 +11,7 @@ extends Control
 
 
 func _ready():
-	OverlaysManager.INVENTORY_TOGGLE.connect(toggle_inventory_visible)
+	OverlaysManager.INVENTORY_TOGGLE.connect(toggle_overlay_visible)
 	
 	Resources_Manager.RESOURCE_UPDATE.connect(update_resources)
 	Resources_Manager.update_resource_signal()
@@ -25,7 +25,9 @@ func update_resources(resources):
 	blastproofs_label.text = str(resources["blastproof_modules"])
 	baroplastics_label.text = str(resources["baroplastics"])
 
-func toggle_inventory_visible(value):
+
+
+func toggle_overlay_visible(value):
 	match value:
 		OverlaysManager.TOGGLE_EFFECT.OPEN:
 			visible = true

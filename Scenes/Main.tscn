@@ -1,18 +1,22 @@
-[gd_scene load_steps=15 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=19 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
-[ext_resource type="Texture2D" uid="uid://u55l12n8ougv" path="res://Assets/UI/Backgrounds/PanelBackground.png" id="3_otmo8"]
-[ext_resource type="Texture2D" uid="uid://c6ef3w2nvexta" path="res://Assets/UI/Icons/money.png" id="4_5ljrx"]
+[ext_resource type="Script" path="res://Scripts/UI/Overlays/KoboldUI.gd" id="4_ekkll"]
 [ext_resource type="Texture2D" uid="uid://svl1x5wxhxc5" path="res://Assets/UI/Icons/kobold.png" id="5_kapuh"]
 [ext_resource type="Texture2D" uid="uid://e4s7gp3snmal" path="res://Assets/UI/Buttons/edit.png" id="6_8khoj"]
 [ext_resource type="PackedScene" uid="uid://o4gfinoagwhn" path="res://Scenes/space.tscn" id="6_i0nte"]
 [ext_resource type="Script" path="res://Scripts/UI/InventoryUI.gd" id="6_noabg"]
 [ext_resource type="Texture2D" uid="uid://ds8np8mgffwsf" path="res://Assets/UI/Buttons/inventory.png" id="7_4anxa"]
+[ext_resource type="Script" path="res://Scripts/UI/Overlays/ShipUI.gd" id="7_4ekkn"]
 [ext_resource type="Texture2D" uid="uid://ba4hrscp74dxy" path="res://Assets/UI/Buttons/navigation.png" id="7_8j0le"]
 [ext_resource type="Texture2D" uid="uid://bggbeuuut1gip" path="res://Assets/UI/Buttons/settings.png" id="8_00xeb"]
+[ext_resource type="Texture2D" uid="uid://byfnyautk0vvx" path="res://Assets/UI/Icons/ship.png" id="8_5obta"]
+[ext_resource type="Texture2D" uid="uid://bf0v1q41kdp36" path="res://Assets/UI/Icons/edit.png" id="8_tivam"]
 [ext_resource type="Texture2D" uid="uid://b56oirf1878ir" path="res://Assets/UI/Backgrounds/menu_background.png" id="9_rwlss"]
+[ext_resource type="Script" path="res://Scripts/UI/Overlays/EditUI.gd" id="9_we0va"]
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="10_b1fbl"]
+[ext_resource type="Script" path="res://Scripts/UI/DebugUI.gd" id="13_k0o72"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fntjo"]
 shader = ExtResource("1_vumaj")
@@ -36,6 +40,15 @@ texture = ExtResource("1_t60kk")
 
 [node name="Space" parent="." instance=ExtResource("6_i0nte")]
 
+[node name="Chromatic Aberration" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_fntjo")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
 [node name="Game Overlays" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
@@ -44,63 +57,119 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopUI" type="Control" parent="Game Overlays"]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_bottom = 36.0
-grow_horizontal = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/TopUI"]
+[node name="Kobold Overlay" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_otmo8")
-region_rect = Rect2(0, 0, 36, 36)
-patch_margin_left = 12
-patch_margin_top = 12
-patch_margin_right = 12
-patch_margin_bottom = 12
+script = ExtResource("4_ekkll")
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/TopUI/NinePatchRect"]
+[node name="Portrait" type="Control" parent="Game Overlays/Kobold Overlay"]
+custom_minimum_size = Vector2(120, 120)
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Kobold Overlay/Portrait"]
+custom_minimum_size = Vector2(30, 30)
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 32
-theme_override_constants/margin_right = 32
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(4, 4)
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-theme_override_constants/separation = 12
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
-layout_mode = 2
-texture = ExtResource("4_5ljrx")
-stretch_mode = 2
-
-[node name="MoneyLabel" type="Label" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "money
-"
-
-[node name="TextureRect2" type="TextureRect" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
-layout_mode = 2
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Kobold Overlay/Portrait"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
 texture = ExtResource("5_kapuh")
-stretch_mode = 2
 
-[node name="KoboldLabel" type="Label" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Kobolds
-"
+[node name="Ship Overlay" type="Control" parent="Game Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("7_4ekkn")
+
+[node name="Portrait" type="Control" parent="Game Overlays/Ship Overlay"]
+custom_minimum_size = Vector2(120, 120)
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Ship Overlay/Portrait"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(4, 4)
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Ship Overlay/Portrait"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("8_5obta")
+
+[node name="Edit Overlay" type="Control" parent="Game Overlays"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("9_we0va")
+
+[node name="Portrait" type="Control" parent="Game Overlays/Edit Overlay"]
+custom_minimum_size = Vector2(120, 120)
+anchors_preset = 0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 136.0
+offset_bottom = 136.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Portrait"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 1
+offset_right = 30.0
+offset_bottom = 30.0
+scale = Vector2(4, 4)
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/Portrait"]
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_right = 120.0
+offset_bottom = 120.0
+texture = ExtResource("8_tivam")
 
 [node name="InventoryMenu" type="Control" parent="Game Overlays"]
 visible = false
@@ -700,16 +769,28 @@ theme_override_constants/margin_bottom = 8
 [node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ModeButtons/MarginContainer"]
 layout_mode = 2
 
-[node name="Navigation" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
+[node name="Kobold" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
-texture_normal = ExtResource("7_8j0le")
+texture_normal = ExtResource("6_8khoj")
+stretch_mode = 0
+
+[node name="Ship" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_8khoj")
 stretch_mode = 0
 
 [node name="Edit" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("6_8khoj")
+stretch_mode = 0
+
+[node name="Navigation" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("7_8j0le")
 stretch_mode = 0
 
 [node name="Inventory" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
@@ -724,11 +805,28 @@ layout_mode = 2
 texture_normal = ExtResource("8_00xeb")
 stretch_mode = 0
 
-[node name="Chromatic Aberration" type="ColorRect" parent="."]
-material = SubResource("ShaderMaterial_fntjo")
+[node name="Debug" type="Control" parent="."]
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -200.0
+offset_top = 27.0
+offset_bottom = 227.0
+grow_horizontal = 0
+script = ExtResource("13_k0o72")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+
+[node name="DebugCoords" type="Label" parent="Debug/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "(0,0,0)"
+horizontal_alignment = 1

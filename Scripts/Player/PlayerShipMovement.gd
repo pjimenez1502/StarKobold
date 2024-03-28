@@ -4,6 +4,9 @@ var partslist #Save list of parts to be referenced? or unique variables for each
 var thruster_list
 @export var thrust_mult := 100.0
 
+func _ready():
+	DebugManager.player_ship = self
+
 func ship_forward_thrust(value):
 	var aim = get_global_transform().basis
 	var forward = -aim.z
