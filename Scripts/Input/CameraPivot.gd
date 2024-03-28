@@ -4,9 +4,13 @@ extends Node3D
 @export var zoom_range : Vector2
 @export var follow_speed : float
 
+enum CAMERA_FOCUS {KOBOLD,SHIP}
+@export var camera_focus : CAMERA_FOCUS
+
 var target : Node3D
 var camera : Camera3D
 func _ready():
+	ControlFocusManager.FOCUS_CHANGED.connect(check_control_focus_camera)
 	camera = get_child(0)
 	target = player
 
@@ -34,3 +38,12 @@ func camera_zoom(value):
 	#camera.position.z = cam_distance
 	
 var looking_at_player = true
+
+func check_control_focus_camera(_control_focus):
+	match _control_focus:
+		0: #control focus is KOBOLD
+			if camera_focus == CAMERA_FOCUS.KOBOLD:
+				camera.current = true
+		1,2: #control focus is SHIP or EDIT
+			if camera_focus == CAMERA_FOCUS.SHIP:
+				camera.current = true

@@ -1,15 +1,11 @@
 extends Node
 
 @export var nav_agent : NavigationAgent3D
-var player_control_enabled := true
 
 func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_L:
-			player_control_enabled = !player_control_enabled
-			
-	if !player_control_enabled:
+	if !ControlFocusManager.current_control_focus == ControlFocusManager.CONTROL_FOCUS.KOBOLD:
 		return
+		
 	if event.is_action_pressed("RightClick"):
 		right_click()
 	

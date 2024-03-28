@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://Scripts/Input/CameraPivot.gd" id="3_xj0at"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShipMovement.gd" id="4_hyrg4"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipInput.gd" id="5_2ag44"]
-[ext_resource type="Script" path="res://Scripts/ShipEditing/ShipEditing.gd" id="6_4y1g3"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/ShipEditInput.gd" id="6_68ihv"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="6_dwxkm"]
 [ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="7_7b8ov"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Builder.gd" id="7_uhsho"]
@@ -60,6 +60,7 @@ script = ExtResource("3_xj0at")
 player = NodePath("../PlayerShip")
 zoom_range = Vector2(20, 60)
 follow_speed = 4.0
+camera_focus = 1
 
 [node name="ShipCamera" type="Camera3D" parent="ShipCameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0, 0.1, 20)
@@ -72,14 +73,11 @@ linear_damp = 0.2
 angular_damp = 5.0
 script = ExtResource("4_hyrg4")
 
-[node name="EditingCamera" type="Camera3D" parent="PlayerShip"]
-transform = Transform3D(-4.37114e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 4.37114e-08, 1.91069e-15, 0, 10, 0)
-
 [node name="Ship Control Input" type="Node" parent="PlayerShip"]
 script = ExtResource("5_2ag44")
 
 [node name="Ship Editing Input" type="Node" parent="PlayerShip"]
-script = ExtResource("6_4y1g3")
+script = ExtResource("6_68ihv")
 
 [node name="Ship Builder" type="Node" parent="PlayerShip/Ship Editing Input"]
 script = ExtResource("7_uhsho")

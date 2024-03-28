@@ -3,27 +3,13 @@ extends Node
 @onready var player_ship = $".."
 @onready var ship_camera = $"../../ShipCameraPivot/ShipCamera"
 @onready var player_camera = $"../../PlayerCameraPivot/PlayerCamera"
-@onready var editing_camera = $"../EditingCamera"
 
-var ship_control_enabled := false
 
-func _input(event):
-	if event is InputEventKey:
-		if event.pressed and event.keycode == KEY_F1:
-			ship_control_enabled = false
-			player_camera.set_current(true)
-		if event.pressed and event.keycode == KEY_F2:
-			ship_control_enabled = true
-			ship_camera.set_current(true)
-		if event.pressed and event.keycode == KEY_F3:
-			ship_control_enabled = false
-			editing_camera.set_current(true)
-			
 func _physics_process(delta):
 	control()
 
 func control():
-	if !ship_control_enabled:
+	if !ControlFocusManager.current_control_focus == ControlFocusManager.CONTROL_FOCUS.SHIP:
 		return
 	if Input.is_action_pressed("YawRight"):
 		player_ship.ship_yaw(-1)

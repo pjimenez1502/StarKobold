@@ -10,17 +10,8 @@ var resources = {
 	"magnetic_elements": 0,
 	"electrical_components": 0,
 	"blastproof_modules": 0,
-	"polyplastics": 0,
+	"baroplastics": 0,
 }
-
-#@export var initial_resources = {
-	#"credits": 0,
-	#"scrap": 0,
-	#"magnetic_elements": 0,
-	#"electrical_components": 0,
-	#"blastproof_modules": 0,
-	#"polyplastics": 0,
-#}
 
 func add_resource(resource, value):
 	resources[resource] += value

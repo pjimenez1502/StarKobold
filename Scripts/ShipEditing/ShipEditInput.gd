@@ -7,7 +7,6 @@ extends Node
 
 @onready var ship_grid_map = $"../NavigationRegion3D/ShipGridMap"
 
-var editingmode_enabled := true
 
 var current_selected_module
 var selected_rotation_index : int = 0
@@ -16,17 +15,15 @@ var selected_rotation_index : int = 0
 ## UI to select parts and show costs / stats
 ## LeftClick to place selected part, RightClick to remove
 
-func toggle_editing():
-	editingmode_enabled = !editingmode_enabled
-	print("editing: ", editingmode_enabled)
-
 func _physics_process(delta):
-	if !editingmode_enabled:
+	if !ControlFocusManager.current_control_focus == ControlFocusManager.CONTROL_FOCUS.EDIT:
+		show_module_preview(false)
 		return
+	show_module_preview(true)
 	move_preview_to_mouse()
 
 func _input(event):
-	if !editingmode_enabled:
+	if !ControlFocusManager.current_control_focus == ControlFocusManager.CONTROL_FOCUS.EDIT:
 		return
 	if event.is_action_pressed("RightClick"):
 		right_click()
@@ -117,3 +114,6 @@ func get_mouse_pos():
 	if !position3D:
 		return Vector3.ZERO
 	return position3D
+
+func show_module_preview(value):
+	module_placer.preview_mesh.visible = value

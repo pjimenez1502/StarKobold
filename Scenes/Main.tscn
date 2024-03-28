@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://svl1x5wxhxc5" path="res://Assets/UI/Icons/kobold.png" id="5_kapuh"]
 [ext_resource type="Texture2D" uid="uid://e4s7gp3snmal" path="res://Assets/UI/Buttons/edit.png" id="6_8khoj"]
 [ext_resource type="PackedScene" uid="uid://o4gfinoagwhn" path="res://Scenes/space.tscn" id="6_i0nte"]
-[ext_resource type="Script" path="res://Scenes/InventoryUIManager.gd" id="6_noabg"]
+[ext_resource type="Script" path="res://Scripts/UI/InventoryUI.gd" id="6_noabg"]
 [ext_resource type="Texture2D" uid="uid://ds8np8mgffwsf" path="res://Assets/UI/Buttons/inventory.png" id="7_4anxa"]
 [ext_resource type="Texture2D" uid="uid://ba4hrscp74dxy" path="res://Assets/UI/Buttons/navigation.png" id="7_8j0le"]
 [ext_resource type="Texture2D" uid="uid://bggbeuuut1gip" path="res://Assets/UI/Buttons/settings.png" id="8_00xeb"]
@@ -36,7 +36,7 @@ texture = ExtResource("1_t60kk")
 
 [node name="Space" parent="." instance=ExtResource("6_i0nte")]
 
-[node name="Game" type="Control" parent="."]
+[node name="Game Overlays" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,15 +44,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TopUI" type="Control" parent="Game"]
-visible = false
+[node name="TopUI" type="Control" parent="Game Overlays"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 36.0
 grow_horizontal = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game/TopUI"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/TopUI"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -66,7 +65,7 @@ patch_margin_top = 12
 patch_margin_right = 12
 patch_margin_bottom = 12
 
-[node name="MarginContainer" type="MarginContainer" parent="Game/TopUI/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/TopUI/NinePatchRect"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -76,34 +75,35 @@ grow_vertical = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_right = 32
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/TopUI/NinePatchRect/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 12
 
-[node name="TextureRect" type="TextureRect" parent="Game/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("4_5ljrx")
 stretch_mode = 2
 
-[node name="MoneyLabel" type="Label" parent="Game/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="MoneyLabel" type="Label" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "money
 "
 
-[node name="TextureRect2" type="TextureRect" parent="Game/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="TextureRect2" type="TextureRect" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
 layout_mode = 2
 texture = ExtResource("5_kapuh")
 stretch_mode = 2
 
-[node name="KoboldLabel" type="Label" parent="Game/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
+[node name="KoboldLabel" type="Label" parent="Game Overlays/TopUI/NinePatchRect/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Kobolds
 "
 
-[node name="Inventory" type="Control" parent="Game"]
+[node name="InventoryMenu" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,7 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("6_noabg")
 
-[node name="Screen to menu margin" type="MarginContainer" parent="Game/Inventory"]
+[node name="Screen to menu margin" type="MarginContainer" parent="Game Overlays/InventoryMenu"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -124,7 +124,7 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 80
 
-[node name="InventoryMenuBackground" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin"]
+[node name="InventoryMenuBackground" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin"]
 layout_mode = 2
 texture = ExtResource("9_rwlss")
 region_rect = Rect2(0, 0, 48, 48)
@@ -133,7 +133,7 @@ patch_margin_top = 16
 patch_margin_right = 16
 patch_margin_bottom = 16
 
-[node name="General HBox" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground"]
+[node name="General HBox" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +141,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Perks Margin" type="MarginContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox"]
+[node name="Perks Margin" type="MarginContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 theme_override_constants/margin_left = 32
@@ -149,7 +149,7 @@ theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin"]
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
 region_rect = Rect2(0, 0, 24, 24)
@@ -158,7 +158,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Perks VBox" type="VBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect"]
+[node name="Perks VBox" type="VBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect"]
 layout_mode = 2
 offset_top = 8.0
 offset_right = 236.0
@@ -166,14 +166,14 @@ offset_bottom = 420.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PerksSectionTitle" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
+[node name="PerksSectionTitle" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
 layout_mode = 2
 text = "Perks
 "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/margin_left = 10
@@ -181,18 +181,18 @@ theme_override_constants/margin_top = 4
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 8
 
-[node name="Perks Scroll Container" type="ScrollContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer"]
+[node name="Perks Scroll Container" type="ScrollContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 8
 
-[node name="Perk Box 1" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 1" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -202,7 +202,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 1"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -215,7 +215,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 2" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 2" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -225,7 +225,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 2"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -238,7 +238,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 3" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 3" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -248,7 +248,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 3"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 3"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -261,7 +261,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 4" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 4" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -271,7 +271,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 4"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 4"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,7 +284,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 5" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 5" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -294,7 +294,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 5"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 5"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -307,7 +307,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 6" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 6" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -317,7 +317,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 6"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 6"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -330,7 +330,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 7" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 7" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -340,7 +340,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 7"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 7"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -353,7 +353,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="Perk Box 8" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
+[node name="Perk Box 8" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer"]
 custom_minimum_size = Vector2(200, 60)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -363,7 +363,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="PerkLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 8"]
+[node name="PerkLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox/MarginContainer/Perks Scroll Container/VBoxContainer/Perk Box 8"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -376,18 +376,22 @@ horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true
 
-[node name="MarginContainer" type="MarginContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
 layout_mode = 2
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
 theme_override_constants/margin_bottom = 32
 
-[node name="Resources" type="VBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer"]
+[node name="Resources" type="VBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="CreditsBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="Tier1" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+layout_mode = 2
+alignment = 1
+
+[node name="CreditsBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -397,7 +401,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/CreditsBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/CreditsBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -405,14 +409,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/CreditsBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/CreditsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Credits:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CreditsLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/CreditsBox/HBoxContainer"]
+[node name="CreditsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/CreditsBox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -421,7 +425,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrapBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="ScrapBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -431,7 +435,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ScrapBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/ScrapBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -439,14 +443,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ScrapBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/ScrapBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Scrap:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrapLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ScrapBox/HBoxContainer"]
+[node name="ScrapLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/ScrapBox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -455,7 +459,11 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagneticsBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="Tier2" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+layout_mode = 2
+alignment = 1
+
+[node name="MagneticsBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -465,7 +473,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/MagneticsBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/MagneticsBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -473,14 +481,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/MagneticsBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/MagneticsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Magnetics:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagneticsLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/MagneticsBox/HBoxContainer"]
+[node name="MagneticsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/MagneticsBox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -489,7 +497,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ElectricalBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="ElectricalBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -499,7 +507,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ElectricalBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/ElectricalBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -507,14 +515,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ElectricalBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/ElectricalBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Electrical:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ElectricalLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/ElectricalBox/HBoxContainer"]
+[node name="ElectricalLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/ElectricalBox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -523,7 +531,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlastproofsBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="BaroplasticsBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -533,7 +541,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/BlastproofsBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/BaroplasticsBox"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -541,14 +549,52 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/BlastproofsBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/BaroplasticsBox/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Baroplastics:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaroplasticsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/BaroplasticsBox/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+layout_mode = 2
+alignment = 1
+
+[node name="BlastproofsBox" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Blastproof:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlastproofsLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/BlastproofsBox/HBoxContainer"]
+[node name="BlastproofsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -557,7 +603,7 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PolyplasticsBox" type="NinePatchRect" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources"]
+[node name="BlastproofsBox2" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer"]
 custom_minimum_size = Vector2(180, 40)
 layout_mode = 2
 texture = ExtResource("10_b1fbl")
@@ -567,7 +613,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/PolyplasticsBox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox2"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -575,15 +621,14 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Title" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/PolyplasticsBox/HBoxContainer"]
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Polyplastics:"
+text = "Blastproof:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PolyplasticsLabel" type="Label" parent="Game/Inventory/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/PolyplasticsBox/HBoxContainer"]
-unique_name_in_owner = true
+[node name="BlastproofsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox2/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "100
@@ -591,7 +636,40 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BottomRight" type="Control" parent="Game"]
+[node name="BlastproofsBox3" type="NinePatchRect" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer"]
+custom_minimum_size = Vector2(180, 40)
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox3"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Blastproof:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlastproofsLabel" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/HBoxContainer/BlastproofsBox3/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "100
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ModeButtons" type="Control" parent="Game Overlays"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -605,7 +683,7 @@ offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="MarginContainer" type="MarginContainer" parent="Game/BottomRight"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ModeButtons"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -619,28 +697,28 @@ grow_vertical = 0
 theme_override_constants/margin_right = 8
 theme_override_constants/margin_bottom = 8
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game/BottomRight/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ModeButtons/MarginContainer"]
 layout_mode = 2
 
-[node name="Navigation" type="TextureButton" parent="Game/BottomRight/MarginContainer/HBoxContainer"]
+[node name="Navigation" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("7_8j0le")
 stretch_mode = 0
 
-[node name="Edit" type="TextureButton" parent="Game/BottomRight/MarginContainer/HBoxContainer"]
+[node name="Edit" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("6_8khoj")
 stretch_mode = 0
 
-[node name="Inventory" type="TextureButton" parent="Game/BottomRight/MarginContainer/HBoxContainer"]
+[node name="Inventory" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("7_4anxa")
 stretch_mode = 0
 
-[node name="Settings" type="TextureButton" parent="Game/BottomRight/MarginContainer/HBoxContainer"]
+[node name="Settings" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 texture_normal = ExtResource("8_00xeb")
