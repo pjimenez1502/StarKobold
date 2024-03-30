@@ -17,4 +17,3 @@ thrust = 200
 
 [node name="PowerBehaviour" type="Node" parent="."]
 script = ExtResource("4_t8grn")
-power = -4

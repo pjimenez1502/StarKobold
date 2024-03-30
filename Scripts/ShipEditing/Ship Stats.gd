@@ -44,9 +44,23 @@ func calculate_power():
 				drained_power += powered_module["module"].power
 	update_show_stats()
 
-func remove_behaviours(module):
+func remove_behaviours(module_behaviours):
 	## search on power_modules and thrust_modules and remove entries with this module??
-	pass
+	
+	for behaviour in module_behaviours:
+		if behaviour is power_behaviour:
+			for power_module in power_modules:
+				if power_module["module"] == behaviour:
+					power_modules.erase(power_module)
+			calculate_power()
+					
+		if behaviour is thruster_behaviour:
+			for thruster_module in thrust_modules:
+				if thruster_module["module"] == behaviour:
+					thrust_modules.erase(thruster_module)
+			calculate_thrust_vectors()
+
+	update_show_stats()
 
 func update_mass(value):
 	mass += value

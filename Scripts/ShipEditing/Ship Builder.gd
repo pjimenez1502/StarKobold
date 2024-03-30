@@ -102,7 +102,9 @@ func remove_module(position):
 	for tile in occupied_tiles:
 		if tile.instance == instance_to_remove:
 			tiles_to_delete.append(tile)
-
+	
+	ship_stats.remove_behaviours(instance_to_remove.behaviours)
+	
 	for tile in tiles_to_delete:
 		occupied_tiles.erase(tile)
 	instance_to_remove.get_parent().remove_child(instance_to_remove)
