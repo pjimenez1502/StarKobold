@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://us0jwkf3ki3x"]
-
-[ext_resource type="PackedScene" uid="uid://bl7ayfa4xistn" path="res://Assets/Models/Tiles/Wall.glb" id="1_uitq4"]
-
-[node name="Wall_01" type="Node3D"]
-
-[node name="mesh" parent="." instance=ExtResource("1_uitq4")]

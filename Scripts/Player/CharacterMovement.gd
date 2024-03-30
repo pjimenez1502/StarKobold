@@ -5,7 +5,7 @@ const JUMP_VELOCITY = 4.5
 
 @onready var animation_player = $AnimationPlayer
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	anim_process()
 
 func movement_finished():

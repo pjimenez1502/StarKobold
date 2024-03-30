@@ -1,19 +1,25 @@
-[gd_scene load_steps=17 format=3 uid="uid://o4gfinoagwhn"]
+[gd_scene load_steps=23 format=3 uid="uid://o4gfinoagwhn"]
 
 [ext_resource type="MeshLibrary" uid="uid://ssv78malycqc" path="res://Scenes/Tilesets/meshlibrary.tres" id="1_2lwcm"]
 [ext_resource type="PackedScene" uid="uid://bftsexb11rsxo" path="res://Scenes/Kobold.tscn" id="2_vobhq"]
 [ext_resource type="Script" path="res://Scripts/Input/CameraPivot.gd" id="3_xj0at"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShipMovement.gd" id="4_hyrg4"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipInput.gd" id="5_2ag44"]
-[ext_resource type="Script" path="res://Scripts/ShipEditing/ShipEditInput.gd" id="6_68ihv"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Stats.gd" id="5_j4sur"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="6_dwxkm"]
 [ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="7_7b8ov"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Builder.gd" id="7_uhsho"]
-[ext_resource type="Script" path="res://Scripts/ShipEditing/Module_Placer.gd" id="8_l177o"]
-[ext_resource type="Resource" uid="uid://ybsoskdf2jpd" path="res://Scenes/Modules/00_Debug_Block/Debug_Block.tres" id="9_qoqfk"]
-[ext_resource type="Resource" uid="uid://bj1huxpv4daeq" path="res://Scenes/Modules/Helm_01/helm_01.tres" id="10_lgb8n"]
-[ext_resource type="Resource" uid="uid://2ynonui0g632" path="res://Scenes/Modules/Floor_01/floor_01.tres" id="11_nk5rw"]
-[ext_resource type="Resource" uid="uid://c4sy3w42884c8" path="res://Scenes/Modules/Wall_01/wall_01.tres" id="12_wd87h"]
+[ext_resource type="Script" path="res://Scripts/Input/ShipEditInput.gd" id="7_xcgv0"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Module Placer.gd" id="8_dl5mh"]
+[ext_resource type="Resource" uid="uid://ybsoskdf2jpd" path="res://Scenes/Modules/System/00_Debug_Block/Debug_Block.tres" id="9_7mcq1"]
+[ext_resource type="Resource" uid="uid://bj1huxpv4daeq" path="res://Scenes/Modules/System/Helm_01/helm_01.tres" id="10_pubpx"]
+[ext_resource type="Resource" uid="uid://2ynonui0g632" path="res://Scenes/Modules/Hull/Floor_01/floor_01.tres" id="11_mjtxf"]
+[ext_resource type="Resource" uid="uid://b3k4f4ghljahq" path="res://Scenes/Modules/Hull/Wall_01/wall_01.tres" id="12_04tvw"]
+[ext_resource type="Resource" uid="uid://k3b4no2dnhpu" path="res://Scenes/Modules/Hull/Door_01/door_01.tres" id="12_5wct2"]
+[ext_resource type="Resource" uid="uid://dt260rg5w6wyo" path="res://Scenes/Modules/Thrust/MainThruster_01/mainThruster_01.tres" id="16_66is7"]
+[ext_resource type="Resource" uid="uid://de1t7em60xi18" path="res://Scenes/Modules/System/HelmChair_01/helmChair_01.tres" id="16_gr4i7"]
+[ext_resource type="Resource" uid="uid://bgufbn7s2gqyt" path="res://Scenes/Modules/Thrust/ManouverThruster_01/manouverThruster_01.tres" id="17_b75t0"]
+[ext_resource type="Resource" uid="uid://b0hcsh2wjrt7q" path="res://Scenes/Modules/Power/Reactor_01/reactor_01.tres" id="18_nf13x"]
 
 [sub_resource type="Environment" id="Environment_b1fdb"]
 background_mode = 1
@@ -73,18 +79,21 @@ linear_damp = 0.2
 angular_damp = 5.0
 script = ExtResource("4_hyrg4")
 
+[node name="Ship Stats" type="Node" parent="PlayerShip"]
+script = ExtResource("5_j4sur")
+
 [node name="Ship Control Input" type="Node" parent="PlayerShip"]
 script = ExtResource("5_2ag44")
 
 [node name="Ship Editing Input" type="Node" parent="PlayerShip"]
-script = ExtResource("6_68ihv")
+script = ExtResource("7_xcgv0")
 
 [node name="Ship Builder" type="Node" parent="PlayerShip/Ship Editing Input"]
 script = ExtResource("7_uhsho")
 
 [node name="Module Placer" type="Node" parent="PlayerShip/Ship Editing Input"]
-script = ExtResource("8_l177o")
-MODULES_DATA = Array[Resource]([ExtResource("9_qoqfk"), ExtResource("10_lgb8n"), ExtResource("11_nk5rw"), ExtResource("12_wd87h")])
+script = ExtResource("8_dl5mh")
+MODULES_DATA = Array[Resource]([ExtResource("9_7mcq1"), ExtResource("11_mjtxf"), ExtResource("12_04tvw"), ExtResource("12_5wct2"), ExtResource("10_pubpx"), ExtResource("16_gr4i7"), ExtResource("16_66is7"), ExtResource("17_b75t0"), ExtResource("18_nf13x")])
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="PlayerShip"]
 navigation_mesh = SubResource("NavigationMesh_8nobd")

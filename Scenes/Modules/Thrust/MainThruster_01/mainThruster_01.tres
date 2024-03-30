@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://dt260rg5w6wyo"]
+
+[ext_resource type="PackedScene" uid="uid://bhm04e0eym0wf" path="res://Scenes/Modules/Thrust/MainThruster_01/mainThruster_01.tscn" id="1_7e3fi"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="2_m3tqg"]
+
+[resource]
+script = ExtResource("2_m3tqg")
+id = "mainthruster_01"
+name = "Thruster"
+desc = "Provides 540KN of forward thrust"
+category = 3
+object = ExtResource("1_7e3fi")
+tiles = [[0, 0], [0, 1], [0, -1]]
+costs = {
+"baroplastic_segments": 0,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 2,
+"magnetic_elements": 4,
+"scrap": 80,
+"semiconductive_fibers": 0
+}
+stats = {
+"integrity": 1000,
+"mass": 80,
+"power": -8
+}
+fixed_rotation = true

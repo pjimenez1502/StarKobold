@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://k3b4no2dnhpu"]
+
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_g3kng"]
+[ext_resource type="PackedScene" uid="uid://ckgy7fiiqthoy" path="res://Scenes/Modules/Hull/Door_01/door_01.tscn" id="1_yuwu1"]
+
+[resource]
+script = ExtResource("1_g3kng")
+id = "door_01"
+name = "Door"
+desc = "Allows walking into other rooms."
+category = 0
+object = ExtResource("1_yuwu1")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 25,
+"semiconductive_fibers": 0
+}
+stats = {
+"integrity": 1000,
+"mass": 30,
+"power": 0
+}
+fixed_rotation = false

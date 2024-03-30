@@ -1,0 +1,27 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://bgufbn7s2gqyt"]
+
+[ext_resource type="PackedScene" uid="uid://cdmf5gyd6b3so" path="res://Scenes/Modules/Thrust/ManouverThruster_01/manouverThruster_01.tscn" id="1_4kenp"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_he6nf"]
+
+[resource]
+script = ExtResource("1_he6nf")
+id = "manouverthruster_01"
+name = "Manouvering Thruster"
+desc = "Provides 200KN of thrust. Lower output and smaller thruster that can be pointed in all directions. When pointed laterally also provides Yaw to the craft."
+category = 3
+object = ExtResource("1_4kenp")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 0,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 2,
+"magnetic_elements": 2,
+"scrap": 60,
+"semiconductive_fibers": 0
+}
+stats = {
+"integrity": 1000,
+"mass": 40,
+"power": -4
+}

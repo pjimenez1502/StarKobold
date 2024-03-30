@@ -8,7 +8,7 @@ extends Control
 @onready var baroplastics_label = %BaroplasticsLabel
 
 @onready var blastproofs_label = %BlastproofsLabel
-
+@onready var semiconductives_label = %SemiconductivesLabel
 
 func _ready():
 	OverlaysManager.INVENTORY_TOGGLE.connect(toggle_overlay_visible)
@@ -17,13 +17,16 @@ func _ready():
 	Resources_Manager.update_resource_signal()
 
 func update_resources(resources):
-	print(resources)
+	#print(resources)
 	credits_label.text = str(resources["credits"])
 	scrap_label.text = str(resources["scrap"])
+	
 	magnetics_label.text = str(resources["magnetic_elements"])
 	electrical_label.text = str(resources["electrical_components"])
+	baroplastics_label.text = str(resources["baroplastic_segments"])
+	
 	blastproofs_label.text = str(resources["blastproof_modules"])
-	baroplastics_label.text = str(resources["baroplastics"])
+	semiconductives_label.text = str(resources["semiconductive_fibers"])
 
 
 

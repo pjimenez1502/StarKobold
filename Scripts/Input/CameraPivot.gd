@@ -15,6 +15,8 @@ func _ready():
 	target = player
 
 func _input(event):
+	if !camera.current:
+		return
 	if Input.is_action_just_pressed("ScrollDown"):
 		camera_zoom(1)
 	if Input.is_action_just_pressed("ScrollUp"):
@@ -31,7 +33,7 @@ func _physics_process(delta):
 	
 	camera.position.z = lerp(camera.position.z, cam_distance, delta * 4)
 	
-@onready var cam_distance : float = zoom_range.x
+@onready var cam_distance : float = zoom_range.y
 func camera_zoom(value):
 	cam_distance = clamp(cam_distance + value, zoom_range.x, zoom_range.y)
 	#print(cam_distance)
@@ -41,9 +43,9 @@ var looking_at_player = true
 
 func check_control_focus_camera(_control_focus):
 	match _control_focus:
-		0: #control focus is KOBOLD
+		0,2: #control focus is KOBOLD
 			if camera_focus == CAMERA_FOCUS.KOBOLD:
 				camera.current = true
-		1,2: #control focus is SHIP or EDIT
+		1: #control focus is SHIP or EDIT
 			if camera_focus == CAMERA_FOCUS.SHIP:
 				camera.current = true

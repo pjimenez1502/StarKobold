@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhm04e0eym0wf"]
+
+[ext_resource type="PackedScene" uid="uid://dww8vdaems5av" path="res://Scenes/Modules/Thrust/MainThruster_01/mainThruster_01.glb" id="1_k317v"]
+
+[node name="MainThruster01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_k317v")]

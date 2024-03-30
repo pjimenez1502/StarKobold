@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://2ynonui0g632"]
+
+[ext_resource type="PackedScene" uid="uid://devk28ae5024u" path="res://Scenes/Modules/Hull/Floor_01/floor_01.tscn" id="1_xm38w"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="2_r0at0"]
+
+[resource]
+script = ExtResource("2_r0at0")
+id = "floor_01"
+name = "Floor"
+desc = "Something to keep you grounded"
+category = 1
+object = ExtResource("1_xm38w")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 0,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 10,
+"semiconductive_fibers": 0
+}
+stats = {
+"integrity": 1000,
+"mass": 10,
+"power": 0
+}
+fixed_rotation = true

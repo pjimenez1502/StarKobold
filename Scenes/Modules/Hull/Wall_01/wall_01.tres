@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://b3k4f4ghljahq"]
+
+[ext_resource type="PackedScene" uid="uid://drwrp16caijle" path="res://Scenes/Modules/Hull/Wall_01/wall_01.tscn" id="1_20s1h"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="2_hfmd4"]
+
+[resource]
+script = ExtResource("2_hfmd4")
+id = "wall_01"
+name = "Wall"
+desc = "Keeps air in and space out"
+category = 0
+object = ExtResource("1_20s1h")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 15,
+"semiconductive_fibers": 0
+}
+stats = {
+"integrity": 1000,
+"mass": 20,
+"power": 0
+}
+fixed_rotation = true

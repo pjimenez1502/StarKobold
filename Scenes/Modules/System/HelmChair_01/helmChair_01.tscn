@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://lgrf3lq0xxlp"]
+
+[ext_resource type="PackedScene" uid="uid://yl0ry7hqq7wo" path="res://Scenes/Modules/System/HelmChair_01/helmChair_01.glb" id="1_cdqrt"]
+
+[node name="HelmChair01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_cdqrt")]

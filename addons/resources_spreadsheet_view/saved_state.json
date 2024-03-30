@@ -7,10 +7,35 @@
     "res://Scenes/Modules/00_Debug_Block/": {
       "resource_local_to_scene": true,
       "resource_name": true
+    },
+    "res://Scenes/Modules/Hull/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/Hull/Floor_01/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/Power/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/System/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/Thrust/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
     }
   },
   "recent_paths": [
-    "res://Scenes/Modules/"
+    "res://Scenes/Modules/",
+    "res://Scenes/Modules/Hull/",
+    "res://Scenes/Modules/System/",
+    "res://Scenes/Modules/Power/",
+    "res://Scenes/Modules/Thrust/",
+    "res://Scenes/Modules/Hardpoint/"
   ],
   "table_functions": {
     "filter": [

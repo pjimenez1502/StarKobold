@@ -9,7 +9,7 @@ func _ready():
 	path_desired_distance = 0.2
 	target_desired_distance = target_distance
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	pathfind_and_move()
 
 func pathfind_and_move():

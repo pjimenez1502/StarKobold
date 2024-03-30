@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://devk28ae5024u"]
+
+[ext_resource type="PackedScene" uid="uid://hyrfxkr2l64f" path="res://Scenes/Modules/Hull/Floor_01/Floor_01.glb" id="1_y77og"]
+
+[node name="Floor01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_y77og")]
