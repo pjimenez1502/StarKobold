@@ -52,11 +52,11 @@ func add_controlpanel_hardpoint_entry(module_data):
 
 
 
-func remove_controlpanel_generator_entry(module_data):
-	REMOVE_CONTROLPANEL_GENERATOR_ENTRY.emit(module_data)
+func remove_controlpanel_generator_entry(module_id):
+	REMOVE_CONTROLPANEL_GENERATOR_ENTRY.emit(module_id)
 	
-func remove_controlpanel_powered_entry(module_data):
-	REMOVE_CONTROLPANEL_POWERED_ENTRY.emit(module_data)
+func remove_controlpanel_powered_entry(module_id):
+	REMOVE_CONTROLPANEL_POWERED_ENTRY.emit(module_id)
 
-func remove_controlpanel_hardpoint_entry(module_data):
-	REMOVE_CONTROLPANEL_HARDPOINT_ENTRY.emit(module_data)
+func remove_controlpanel_hardpoint_entry(module_id):
+	REMOVE_CONTROLPANEL_HARDPOINT_ENTRY.emit(module_id)

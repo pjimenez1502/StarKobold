@@ -47,6 +47,25 @@ func can_afford(resourcelist) -> bool:
 			return false
 	return true
 
+var module_return_chance := 20 ## chance in % of resources to recover
+func return_resources(module_costs):
+	var returned_resources = {
+	"credits": 0,
+	"scrap": 0,
+	"magnetic_elements": 0,
+	"electrical_components": 0,
+	"baroplastic_segments": 0,
+	"blastproof_modules": 0,
+	"semiconductive_fibers": 0,
+	#"": 0,
+	}
+	for resource in module_costs:
+		if module_costs[resource] == 0:
+			continue
+		for i in range(0,module_costs[resource]):
+			if randi_range(0, 100) <= module_return_chance: 
+				returned_resources[resource] += 1
+	print("RETURNED: ", returned_resources)
 func update_resource_signal():
 	RESOURCE_UPDATE.emit(resources)
 

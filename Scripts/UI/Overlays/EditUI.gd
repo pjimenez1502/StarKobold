@@ -36,7 +36,6 @@ func update_resources(resources):
 	#blastproofs_label.text = str(resources["blastproof_modules"])
 
 func update_ship_stats(stats):
-	print("updatingstats")
 	ship_mass_label.text = str(stats["mass"], " T")
 	ship_power_label.text = str(stats["drained_power"], "/", stats["available_power"], " MWh")
 	

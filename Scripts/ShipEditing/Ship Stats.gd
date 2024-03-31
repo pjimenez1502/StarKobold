@@ -41,12 +41,7 @@ func add_powered_module(module_data):
 	#pass
 
 
-func remove_module(module):
-	if !module is module_properties:
-		return
-	remove_behaviours(module.behaviours)
-	##signal to remove from controlpanel
-	
+
 func calculate_thrust_vectors():
 	longitudinal_thrust = Vector2.ZERO
 	lateral_thrust = Vector2.ZERO
@@ -78,19 +73,24 @@ func calculate_power():
 			drained_power += powered_module["module"].power
 	update_show_stats()
 
-func remove_behaviours(module_behaviours):
-	## search on powered_modules and thrust_modules and remove entries with this module??
+func remove_module(module):
+	if !module is module_properties:
+		return
+	remove_behaviours(module.behaviours)
+	##signal to remove from controlpanel
 	
+func remove_behaviours(module_behaviours):
 	for behaviour in module_behaviours:
 		if behaviour is power_behaviour:
 			for power_module in powered_modules:
 				if power_module["module"] == behaviour:
 					powered_modules.erase(power_module)
-					#OverlaysManager.remove_controlpanel_powered_entry()
+					OverlaysManager.remove_controlpanel_powered_entry(power_module["module_inst_id"])
 					
 			for power_module in generator_modules:
 				if power_module["module"] == behaviour:
 					generator_modules.erase(power_module)
+					OverlaysManager.remove_controlpanel_generator_entry(power_module["module_inst_id"])
 			calculate_power()
 					
 		if behaviour is thruster_behaviour:
@@ -100,7 +100,7 @@ func remove_behaviours(module_behaviours):
 			calculate_thrust_vectors()
 		
 		#if behaviour is hardpoint_behaviour:
-
+					#OverlaysManager.remove_controlpanel_powered_entry(power_module["module_inst_id"])
 	update_show_stats()
 
 func update_mass(value):

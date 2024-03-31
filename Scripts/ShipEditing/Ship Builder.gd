@@ -97,20 +97,23 @@ func remove_module(position):
 	
 	if !instance_to_remove:
 		return false
-		
-	var tiles_to_delete : Array
-	for tile in occupied_tiles:
-		if tile.instance == instance_to_remove:
-			tiles_to_delete.append(tile)
 	
 	ship_stats.remove_module(instance_to_remove)
 	ship_stats.update_mass(-tile_to_remove.module_data.stats["mass"])
+	return_resources(tile_to_remove.module_data.costs)
 	
+	var tiles_to_delete : Array ## erase occupied tiles
+	for tile in occupied_tiles:
+		if tile.instance == instance_to_remove:
+			tiles_to_delete.append(tile)
 	for tile in tiles_to_delete:
 		occupied_tiles.erase(tile)
 	instance_to_remove.get_parent().remove_child(instance_to_remove)
 	ship_navigation_region.bake_navigation_mesh()
 	instance_to_remove.queue_free()
+
+func return_resources(module_costs):
+	Resources_Manager.return_resources(module_costs)
 	
 
 
