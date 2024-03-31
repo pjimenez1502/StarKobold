@@ -82,7 +82,7 @@ func instantiate_module(module_id, position, rotation_index):
 	
 	var module_instance_id = fill_occupied_tiles_from_module(module_data, position, instance, rotation_index)
 	
-	implement_module_behaviour(instance, position, rotation_index, module_instance_id, module_data.stats)
+	implement_module_behaviour(instance, position, rotation_index, module_instance_id, module_data)
 	
 	Resources_Manager.remove_resourcelist(module_data.costs)
 	ship_navigation_region.bake_navigation_mesh()
@@ -103,37 +103,40 @@ func remove_module(position):
 		if tile.instance == instance_to_remove:
 			tiles_to_delete.append(tile)
 	
-	ship_stats.remove_behaviours(instance_to_remove.behaviours)
+	ship_stats.remove_module(instance_to_remove)
+	ship_stats.update_mass(-tile_to_remove.module_data.stats["mass"])
 	
 	for tile in tiles_to_delete:
 		occupied_tiles.erase(tile)
 	instance_to_remove.get_parent().remove_child(instance_to_remove)
 	ship_navigation_region.bake_navigation_mesh()
 	instance_to_remove.queue_free()
+	
 
 
 
-func implement_module_behaviour(module_instance, position, rotation_index, module_instance_id, module_stats):
+func implement_module_behaviour(module_instance, position, rotation_index, module_instance_id, module_data):
 	if module_instance is module_properties:
 		for module_behaviour in module_instance.behaviours:
+			
 			if module_behaviour is adaptivewall_behaviour: ## CHECK DIRECT SURROUNDING TILES FOR WALLS
 				var surrounding_tiles = get_surrounding_tile_data(position)
 				module_behaviour.connect_surrounding_walls(surrounding_tiles) ## CHECK FOCUSED WALL
 				update_surrounding_walls(surrounding_tiles) ## UPDATE SURROUNDING WALLS
 				
 			if module_behaviour is thruster_behaviour:
-				ship_stats.thrust_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "rotation": rotation_index, "enabled": true})
-				ship_stats.calculate_thrust_vectors()
+				ship_stats.add_thruster_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "rotation": rotation_index, "enabled": true})
 				
 			if module_behaviour is power_behaviour:
-				module_behaviour.set_value_from_stats(module_stats["power"])
-				if module_stats["power"] > 0:
-					ship_stats.generator_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true})
-				if module_stats["power"] < 0:
-					ship_stats.powered_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true})
-				ship_stats.calculate_power()
+				module_behaviour.set_value_from_stats(module_data.stats["power"])
+				if module_data.stats["power"] > 0:
+					ship_stats.add_generator_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "enabled": true})
+					
+				if module_data.stats["power"] < 0:
+					ship_stats.add_powered_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name ,"enabled": true})
 				
-	ship_stats.update_mass(module_stats["mass"])
+				
+	ship_stats.update_mass(module_data.stats["mass"])
 
 func fetch_tile_by_pos(position):
 	for tile in occupied_tiles:

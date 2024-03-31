@@ -3,6 +3,7 @@ extends Node
 signal RESOURCE_UPDATE
 
 signal SHIP_STAT_UPDATE
+signal SHIP_CALCULATE_POWER
 
 var no_costs := false
 

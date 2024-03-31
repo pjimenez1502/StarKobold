@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=23 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
@@ -21,8 +21,6 @@
 [ext_resource type="Texture2D" uid="uid://b2ixxgoya6ad" path="res://Assets/UI/Icons/power.png" id="12_wcnhe"]
 [ext_resource type="Script" path="res://Scripts/UI/DebugUI.gd" id="13_k0o72"]
 [ext_resource type="Script" path="res://Scripts/UI/ControlPanelUI.gd" id="20_ybac4"]
-[ext_resource type="Texture2D" uid="uid://b0eaepjnkreka" path="res://Assets/UI/Buttons/toggle_on.png" id="21_36fml"]
-[ext_resource type="Texture2D" uid="uid://bmvfotwbgmt1y" path="res://Assets/UI/Buttons/toggle_off.png" id="22_v84e1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fntjo"]
 shader = ExtResource("1_vumaj")
@@ -1515,6 +1513,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="ControlPanelMenu" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -1574,64 +1573,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer"]
+[node name="GeneratorEntryContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "Reactor"
-horizontal_alignment = 1
-
-[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "20 KWh"
-horizontal_alignment = 1
-
-[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_icons/checked = ExtResource("21_36fml")
-theme_override_icons/unchecked = ExtResource("22_v84e1")
 
 [node name="PoweredModules" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
 layout_mode = 2
@@ -1655,64 +1599,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer"]
+[node name="PoweredEntryContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "Reactor"
-horizontal_alignment = 1
-
-[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "20 KWh"
-horizontal_alignment = 1
-
-[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_icons/checked = ExtResource("21_36fml")
-theme_override_icons/unchecked = ExtResource("22_v84e1")
 
 [node name="Hardpoints" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
 layout_mode = 2
@@ -1736,64 +1625,9 @@ horizontal_alignment = 1
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer"]
+[node name="HardpointsEntryContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer"]
-custom_minimum_size = Vector2(280, 50)
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 4
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
-layout_mode = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "Reactor"
-horizontal_alignment = 1
-
-[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
-theme_override_font_sizes/font_size = 12
-text = "20 KWh"
-horizontal_alignment = 1
-
-[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 8
-theme_override_icons/checked = ExtResource("21_36fml")
-theme_override_icons/unchecked = ExtResource("22_v84e1")
 
 [node name="Debug" type="Control" parent="."]
 custom_minimum_size = Vector2(200, 80)

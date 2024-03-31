@@ -1,0 +1,68 @@
+[gd_scene load_steps=6 format=3 uid="uid://duyewfuvx1n0"]
+
+[ext_resource type="Script" path="res://Scenes/ControlPanel_Module_Entry.gd" id="1_3k7m8"]
+[ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="2_dt6nv"]
+[ext_resource type="FontFile" uid="uid://dvmip81rb3aym" path="res://Assets/Font/PlayerSansMono8x8-Classic.ttf" id="3_x1acp"]
+[ext_resource type="Texture2D" uid="uid://b0eaepjnkreka" path="res://Assets/UI/Buttons/toggle_on.png" id="4_1hwif"]
+[ext_resource type="Texture2D" uid="uid://bmvfotwbgmt1y" path="res://Assets/UI/Buttons/toggle_off.png" id="5_jj6hu"]
+
+[node name="ControlPanel_Module_Entry" type="Control"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_3k7m8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="MarginContainer"]
+layout_mode = 2
+texture = ExtResource("2_dt6nv")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModuleName" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+custom_minimum_size = Vector2(146, 0)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_x1acp")
+theme_override_font_sizes/font_size = 8
+text = "small Reactor"
+horizontal_alignment = 1
+clip_text = true
+
+[node name="ModulePower" type="Label" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_fonts/font = ExtResource("3_x1acp")
+theme_override_font_sizes/font_size = 8
+text = "20 KWh"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_icons/checked = ExtResource("4_1hwif")
+theme_override_icons/unchecked = ExtResource("5_jj6hu")
+
+[connection signal="pressed" from="MarginContainer/NinePatchRect/HBoxContainer/CheckButton" to="." method="toggle_module"]

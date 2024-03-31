@@ -7,7 +7,7 @@
 
 [node name="ManouverThruster01" type="Node3D" node_paths=PackedStringArray("behaviours")]
 script = ExtResource("1_61bp7")
-behaviours = [NodePath("ThrusterBehaviour")]
+behaviours = [NodePath("ThrusterBehaviour"), NodePath("PowerBehaviour")]
 
 [node name="mesh" parent="." instance=ExtResource("1_0xidf")]
 

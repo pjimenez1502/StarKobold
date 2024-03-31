@@ -1,5 +1,6 @@
 extends Node
 
+## CONTROL OVERLAY VIEWS
 enum TOGGLE_EFFECT { OPEN, CLOSE, TOGGLE}
 signal INVENTORY_TOGGLE
 signal CONTROLPANEL_TOGGLE
@@ -29,3 +30,33 @@ func toggle_ship_overlay(value):
 
 func toggle_edit_overlay(value):
 	EDIT_TOGGLE.emit(value)
+
+
+#CONTROL MENUS DATA
+signal ADD_CONTROLPANEL_GENERATOR_ENTRY
+signal ADD_CONTROLPANEL_POWERED_ENTRY
+signal ADD_CONTROLPANEL_HARDPOINT_ENTRY
+
+signal REMOVE_CONTROLPANEL_GENERATOR_ENTRY
+signal REMOVE_CONTROLPANEL_POWERED_ENTRY
+signal REMOVE_CONTROLPANEL_HARDPOINT_ENTRY
+
+func add_controlpanel_generator_entry(module_data):
+	ADD_CONTROLPANEL_GENERATOR_ENTRY.emit(module_data)
+	
+func add_controlpanel_powered_entry(module_data):
+	ADD_CONTROLPANEL_POWERED_ENTRY.emit(module_data)
+
+func add_controlpanel_hardpoint_entry(module_data):
+	ADD_CONTROLPANEL_HARDPOINT_ENTRY.emit(module_data)
+
+
+
+func remove_controlpanel_generator_entry(module_data):
+	REMOVE_CONTROLPANEL_GENERATOR_ENTRY.emit(module_data)
+	
+func remove_controlpanel_powered_entry(module_data):
+	REMOVE_CONTROLPANEL_POWERED_ENTRY.emit(module_data)
+
+func remove_controlpanel_hardpoint_entry(module_data):
+	REMOVE_CONTROLPANEL_HARDPOINT_ENTRY.emit(module_data)

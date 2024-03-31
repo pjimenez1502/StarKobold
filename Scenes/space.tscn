@@ -28,8 +28,10 @@ ambient_light_energy = 0.0
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_8nobd"]
 geometry_parsed_geometry_type = 1
+cell_size = 0.2
 agent_height = 1.0
-agent_radius = 0.1
+agent_radius = 0.2
+agent_max_climb = 0.0
 
 [node name="Space" type="Node3D"]
 

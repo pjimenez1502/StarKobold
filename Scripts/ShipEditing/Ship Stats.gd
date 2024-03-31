@@ -5,6 +5,8 @@ var powered_modules := []
 ##   power module example:  {"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true}
 var thrust_modules := []
 ##   thrust module example: {"module": module_behaviour, "module_inst_id": module_instance_id, "rotation": rotation_index, "enabled": true}
+var hardpoint_module := []
+##   thrust module example: {"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true, "firing": false}
 
 var mass : int
 
@@ -15,9 +17,36 @@ var longitudinal_thrust : Vector2
 var lateral_thrust : Vector2
 
 func _ready():
+	Resources_Manager.SHIP_CALCULATE_POWER.connect(calculate_power)
+	
 	DebugManager.player_ship_stats = self
 	update_show_stats()
 
+
+func add_thruster_module(module_data):
+	thrust_modules.append(module_data)
+	calculate_thrust_vectors()
+
+func add_generator_module(module_data):
+	generator_modules.append(module_data)
+	calculate_power()
+	OverlaysManager.add_controlpanel_generator_entry(module_data)
+
+func add_powered_module(module_data):
+	powered_modules.append(module_data)
+	calculate_power()
+	OverlaysManager.add_controlpanel_powered_entry(module_data)
+
+#func add_hardpoint_module(module_data):
+	#pass
+
+
+func remove_module(module):
+	if !module is module_properties:
+		return
+	remove_behaviours(module.behaviours)
+	##signal to remove from controlpanel
+	
 func calculate_thrust_vectors():
 	longitudinal_thrust = Vector2.ZERO
 	lateral_thrust = Vector2.ZERO
@@ -57,6 +86,8 @@ func remove_behaviours(module_behaviours):
 			for power_module in powered_modules:
 				if power_module["module"] == behaviour:
 					powered_modules.erase(power_module)
+					#OverlaysManager.remove_controlpanel_powered_entry()
+					
 			for power_module in generator_modules:
 				if power_module["module"] == behaviour:
 					generator_modules.erase(power_module)
@@ -67,6 +98,8 @@ func remove_behaviours(module_behaviours):
 				if thruster_module["module"] == behaviour:
 					thrust_modules.erase(thruster_module)
 			calculate_thrust_vectors()
+		
+		#if behaviour is hardpoint_behaviour:
 
 	update_show_stats()
 
@@ -77,7 +110,3 @@ func update_mass(value):
 func update_show_stats():
 	Resources_Manager.SHIP_STAT_UPDATE.emit({"mass": mass, "available_power": available_power, "drained_power": drained_power})
 
-func toggle_module_enabled(module_id, value):
-	## TODO: REFERENCE FROM CONTROL PANEL BY "module_inst_id"
-	## find in each list and toggle enabled
-	pass
