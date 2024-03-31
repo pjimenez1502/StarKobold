@@ -2,6 +2,8 @@ extends Node
 
 enum TOGGLE_EFFECT { OPEN, CLOSE, TOGGLE}
 signal INVENTORY_TOGGLE
+signal CONTROLPANEL_TOGGLE
+
 signal KOBOLD_TOGGLE
 signal SHIP_TOGGLE
 signal EDIT_TOGGLE
@@ -13,6 +15,9 @@ func _input(event):
 		INVENTORY_TOGGLE.emit(TOGGLE_EFFECT.CLOSE)
 	if Input.is_action_just_pressed("ToggleInventory"):
 		INVENTORY_TOGGLE.emit(TOGGLE_EFFECT.TOGGLE)
+	
+	if Input.is_action_just_pressed("ToggleControlPanel"):
+		CONTROLPANEL_TOGGLE.emit(TOGGLE_EFFECT.TOGGLE)
 
 
 

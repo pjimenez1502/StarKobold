@@ -25,3 +25,4 @@ stats = {
 "mass": 80,
 "power": 20
 }
+fixed_rotation = false

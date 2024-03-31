@@ -1,7 +1,10 @@
 extends Node
 
-var power_modules := []
+var generator_modules := []
+var powered_modules := []
+##   power module example:  {"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true}
 var thrust_modules := []
+##   thrust module example: {"module": module_behaviour, "module_inst_id": module_instance_id, "rotation": rotation_index, "enabled": true}
 
 var mass : int
 
@@ -21,7 +24,8 @@ func calculate_thrust_vectors():
 	#print(thrust_modules)
 	
 	for thruster in thrust_modules:
-		if thruster["module"] != null:
+		#if thruster["module"] != null:
+		if thruster["enabled"]:
 			match thruster["rotation"]:
 				0:#FORWARD
 					longitudinal_thrust.x += thruster["module"].thrust
@@ -36,22 +40,26 @@ func calculate_power():
 	available_power = 0
 	drained_power = 0
 	
-	for powered_module in power_modules:
-		#if powered_module["module"] != null:
-			if powered_module["module"].power > 0:
-				available_power += powered_module["module"].power
-			if powered_module["module"].power <0:
-				drained_power += powered_module["module"].power
+	for generator_module in generator_modules:
+		if generator_module["enabled"]:
+			available_power += generator_module["module"].power
+	
+	for powered_module in powered_modules:
+		if powered_module["enabled"]:
+			drained_power += powered_module["module"].power
 	update_show_stats()
 
 func remove_behaviours(module_behaviours):
-	## search on power_modules and thrust_modules and remove entries with this module??
+	## search on powered_modules and thrust_modules and remove entries with this module??
 	
 	for behaviour in module_behaviours:
 		if behaviour is power_behaviour:
-			for power_module in power_modules:
+			for power_module in powered_modules:
 				if power_module["module"] == behaviour:
-					power_modules.erase(power_module)
+					powered_modules.erase(power_module)
+			for power_module in generator_modules:
+				if power_module["module"] == behaviour:
+					generator_modules.erase(power_module)
 			calculate_power()
 					
 		if behaviour is thruster_behaviour:
@@ -68,4 +76,8 @@ func update_mass(value):
 
 func update_show_stats():
 	Resources_Manager.SHIP_STAT_UPDATE.emit({"mass": mass, "available_power": available_power, "drained_power": drained_power})
-	
+
+func toggle_module_enabled(module_id, value):
+	## TODO: REFERENCE FROM CONTROL PANEL BY "module_inst_id"
+	## find in each list and toggle enabled
+	pass

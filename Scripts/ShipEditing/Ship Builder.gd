@@ -122,12 +122,15 @@ func implement_module_behaviour(module_instance, position, rotation_index, modul
 				update_surrounding_walls(surrounding_tiles) ## UPDATE SURROUNDING WALLS
 				
 			if module_behaviour is thruster_behaviour:
-				ship_stats.thrust_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "rotation": rotation_index})
+				ship_stats.thrust_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "rotation": rotation_index, "enabled": true})
 				ship_stats.calculate_thrust_vectors()
 				
 			if module_behaviour is power_behaviour:
 				module_behaviour.set_value_from_stats(module_stats["power"])
-				ship_stats.power_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id})
+				if module_stats["power"] > 0:
+					ship_stats.generator_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true})
+				if module_stats["power"] < 0:
+					ship_stats.powered_modules.append({"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true})
 				ship_stats.calculate_power()
 				
 	ship_stats.update_mass(module_stats["mass"])

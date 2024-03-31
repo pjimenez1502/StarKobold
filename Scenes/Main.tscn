@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=25 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
@@ -16,9 +16,13 @@
 [ext_resource type="Texture2D" uid="uid://b56oirf1878ir" path="res://Assets/UI/Backgrounds/menu_background.png" id="9_rwlss"]
 [ext_resource type="Script" path="res://Scripts/UI/Overlays/EditUI.gd" id="9_we0va"]
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="10_b1fbl"]
+[ext_resource type="FontFile" uid="uid://dvmip81rb3aym" path="res://Assets/Font/PlayerSansMono8x8-Classic.ttf" id="11_ohhv0"]
 [ext_resource type="Texture2D" uid="uid://ds02clpjj473a" path="res://Assets/UI/Icons/weight.png" id="11_rb680"]
 [ext_resource type="Texture2D" uid="uid://b2ixxgoya6ad" path="res://Assets/UI/Icons/power.png" id="12_wcnhe"]
 [ext_resource type="Script" path="res://Scripts/UI/DebugUI.gd" id="13_k0o72"]
+[ext_resource type="Script" path="res://Scripts/UI/ControlPanelUI.gd" id="20_ybac4"]
+[ext_resource type="Texture2D" uid="uid://b0eaepjnkreka" path="res://Assets/UI/Buttons/toggle_on.png" id="21_36fml"]
+[ext_resource type="Texture2D" uid="uid://bmvfotwbgmt1y" path="res://Assets/UI/Buttons/toggle_off.png" id="22_v84e1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fntjo"]
 shader = ExtResource("1_vumaj")
@@ -149,6 +153,7 @@ offset_bottom = 80.0
 texture = ExtResource("8_5obta")
 
 [node name="Edit Overlay" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -239,6 +244,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Scrp:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -246,6 +253,8 @@ vertical_alignment = 1
 [node name="ScrapEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -285,6 +294,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "mgtc:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -292,6 +303,8 @@ vertical_alignment = 1
 [node name="MagneticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="Electrical" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -327,6 +340,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "elect:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -334,6 +349,8 @@ vertical_alignment = 1
 [node name="ElectricalEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="Baroplastic" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -369,6 +386,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "brps:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -376,6 +395,8 @@ vertical_alignment = 1
 [node name="BaroplasticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -415,6 +436,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "blpf:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -422,6 +445,8 @@ vertical_alignment = 1
 [node name="BlastproofsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="Semiconductive" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -457,6 +482,8 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "scon:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -464,6 +491,8 @@ vertical_alignment = 1
 [node name="SemiconductivesEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="uuh" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
@@ -499,12 +528,16 @@ alignment = 1
 [node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "S:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Label2" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh/MarginContainer/HBoxContainer"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100"
 
 [node name="ShipStats" type="Control" parent="Game Overlays/Edit Overlay"]
@@ -545,7 +578,11 @@ expand_mode = 2
 [node name="ShipMassLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Weight/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
 text = "nan"
+horizontal_alignment = 1
 
 [node name="Power" type="Control" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer"]
 custom_minimum_size = Vector2(130, 40)
@@ -567,7 +604,11 @@ expand_mode = 2
 [node name="ShipPowerLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Power/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
 text = "nan"
+horizontal_alignment = 1
 
 [node name="CurrentCategory" type="Control" parent="Game Overlays/Edit Overlay"]
 custom_minimum_size = Vector2(100, 100)
@@ -929,6 +970,8 @@ grow_vertical = 2
 
 [node name="PerksSectionTitle" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -970,6 +1013,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -993,6 +1038,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1016,6 +1063,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1039,6 +1088,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1062,6 +1113,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1085,6 +1138,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1108,6 +1163,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1131,6 +1188,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Perks
 "
 horizontal_alignment = 1
@@ -1173,6 +1232,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/CreditsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Credits:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1181,6 +1242,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1207,6 +1270,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/ScrapBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Scrap:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1215,6 +1280,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1245,6 +1312,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/MagneticsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Magnetics:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1253,6 +1322,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1279,6 +1350,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/ElectricalBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Electrical:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1287,6 +1360,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1313,6 +1388,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/BaroplasticsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Baroplastics:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1321,6 +1398,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1351,6 +1430,8 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier3/BlastproofsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "Blastproof:"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -1359,6 +1440,8 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "100
 "
 horizontal_alignment = 1
@@ -1431,8 +1514,289 @@ text = "100
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="ControlPanelMenu" type="Control" parent="Game Overlays"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("20_ybac4")
+
+[node name="Screen to menu margin" type="MarginContainer" parent="Game Overlays/ControlPanelMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 80
+
+[node name="InventoryMenuBackground" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin"]
+layout_mode = 2
+texture = ExtResource("9_rwlss")
+region_rect = Rect2(0, 0, 48, 48)
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="General HBox" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Generators" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators"]
+layout_mode = 2
+
+[node name="Powerplant" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
+text = "PowerPlant"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "Reactor"
+horizontal_alignment = 1
+
+[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "20 KWh"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_icons/checked = ExtResource("21_36fml")
+theme_override_icons/unchecked = ExtResource("22_v84e1")
+
+[node name="PoweredModules" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules"]
+layout_mode = 2
+
+[node name="PoweredModules" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
+text = "Powered Modules"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "Reactor"
+horizontal_alignment = 1
+
+[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "20 KWh"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_icons/checked = ExtResource("21_36fml")
+theme_override_icons/unchecked = ExtResource("22_v84e1")
+
+[node name="Hardpoints" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 32
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints"]
+layout_mode = 2
+
+[node name="Hardpoints" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
+text = "Hardpoints"
+horizontal_alignment = 1
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="Reactor1" type="Control" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer"]
+custom_minimum_size = Vector2(280, 50)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 4
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer"]
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModuleName" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "Reactor"
+horizontal_alignment = 1
+
+[node name="ModulePower" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 12
+text = "20 KWh"
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer/VBoxContainer/Reactor1/MarginContainer/NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_icons/checked = ExtResource("21_36fml")
+theme_override_icons/unchecked = ExtResource("22_v84e1")
+
 [node name="Debug" type="Control" parent="."]
-custom_minimum_size = Vector2(200, 200)
+custom_minimum_size = Vector2(200, 80)
 layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
@@ -1440,7 +1804,7 @@ anchor_right = 1.0
 offset_left = -284.0
 offset_top = 20.0
 offset_right = -84.0
-offset_bottom = 220.0
+offset_bottom = 100.0
 grow_horizontal = 0
 mouse_filter = 1
 script = ExtResource("13_k0o72")
@@ -1456,11 +1820,15 @@ grow_vertical = 2
 [node name="DebugCoords" type="Label" parent="Debug/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "(0,0,0)"
 horizontal_alignment = 1
 
 [node name="DebugThrust" type="Label" parent="Debug/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
 text = "0,0,0,0"
 horizontal_alignment = 1
