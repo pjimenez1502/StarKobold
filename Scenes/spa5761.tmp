@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://o4gfinoagwhn"]
+[gd_scene load_steps=23 format=3 uid="uid://o4gfinoagwhn"]
 
 [ext_resource type="MeshLibrary" uid="uid://ssv78malycqc" path="res://Scenes/Tilesets/meshlibrary.tres" id="1_2lwcm"]
 [ext_resource type="PackedScene" uid="uid://bftsexb11rsxo" path="res://Scenes/Kobold.tscn" id="2_vobhq"]
@@ -11,9 +11,15 @@
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Builder.gd" id="7_uhsho"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipEditInput.gd" id="7_xcgv0"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Module Placer.gd" id="8_dl5mh"]
-[ext_resource type="Resource" uid="uid://dpnkrrlift4kk" path="res://Scenes/Modules/0_COCKPIT/cockpit_small_01/cockpit_small_01.tres" id="10_bonms"]
-[ext_resource type="Resource" uid="uid://b0hcsh2wjrt7q" path="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.tres" id="11_ntiln"]
-[ext_resource type="Resource" uid="uid://ct6xk42t76h77" path="res://Scenes/Modules/2_THRUSTER/thruster_main_small_01/thruster_main_small_01.tres" id="12_e53um"]
+[ext_resource type="Resource" uid="uid://ybsoskdf2jpd" path="res://Scenes/Modules/System/00_Debug_Block/Debug_Block.tres" id="9_7mcq1"]
+[ext_resource type="Resource" uid="uid://bj1huxpv4daeq" path="res://Scenes/Modules/System/Helm_01/helm_01.tres" id="10_pubpx"]
+[ext_resource type="Resource" uid="uid://2ynonui0g632" path="res://Scenes/Modules/Hull/Floor_01/floor_01.tres" id="11_mjtxf"]
+[ext_resource type="Resource" uid="uid://b3k4f4ghljahq" path="res://Scenes/Modules/Hull/Wall_01/wall_01.tres" id="12_04tvw"]
+[ext_resource type="Resource" uid="uid://k3b4no2dnhpu" path="res://Scenes/Modules/Hull/Door_01/door_01.tres" id="12_5wct2"]
+[ext_resource type="Resource" uid="uid://dt260rg5w6wyo" path="res://Scenes/Modules/Thrust/MainThruster_01/mainThruster_01.tres" id="16_66is7"]
+[ext_resource type="Resource" uid="uid://de1t7em60xi18" path="res://Scenes/Modules/System/HelmChair_01/helmChair_01.tres" id="16_gr4i7"]
+[ext_resource type="Resource" uid="uid://bgufbn7s2gqyt" path="res://Scenes/Modules/Thrust/ManouverThruster_01/manouverThruster_01.tres" id="17_b75t0"]
+[ext_resource type="Resource" uid="uid://b0hcsh2wjrt7q" path="res://Scenes/Modules/Power/Reactor_01/reactor_01.tres" id="18_nf13x"]
 
 [sub_resource type="Environment" id="Environment_b1fdb"]
 background_mode = 1
@@ -93,13 +99,14 @@ script = ExtResource("7_uhsho")
 
 [node name="Module Placer" type="Node" parent="PlayerShip/Ship Editing Input"]
 script = ExtResource("8_dl5mh")
-MODULES_DATA = Array[Resource]([ExtResource("10_bonms"), ExtResource("11_ntiln"), ExtResource("12_e53um")])
+MODULES_DATA = Array[Resource]([ExtResource("9_7mcq1"), ExtResource("11_mjtxf"), ExtResource("12_04tvw"), ExtResource("12_5wct2"), ExtResource("10_pubpx"), ExtResource("16_gr4i7"), ExtResource("16_66is7"), ExtResource("17_b75t0"), ExtResource("18_nf13x")])
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="PlayerShip"]
 navigation_mesh = SubResource("NavigationMesh_8nobd")
 
 [node name="ShipGridMap" type="GridMap" parent="PlayerShip/NavigationRegion3D"]
 mesh_library = ExtResource("1_2lwcm")
+cell_size = Vector3(1, 1, 1)
 cell_center_x = false
 cell_center_y = false
 cell_center_z = false

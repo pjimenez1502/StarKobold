@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cqiate3fj770d"]
+
+[ext_resource type="PackedScene" uid="uid://cd2lv1246tx0l" path="res://Scenes/Modules/0_COCKPIT/cockpit_small_01/cockpit_small_01.glb" id="1_3xmgg"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/module_properties.gd" id="1_n2uid"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="3_y1es7"]
+
+[node name="CockpitSmall01" type="Node3D" node_paths=PackedStringArray("behaviours")]
+script = ExtResource("1_n2uid")
+behaviours = [NodePath("Generator")]
+
+[node name="mesh" parent="." instance=ExtResource("1_3xmgg")]
+
+[node name="Generator" type="Node" parent="."]
+script = ExtResource("3_y1es7")

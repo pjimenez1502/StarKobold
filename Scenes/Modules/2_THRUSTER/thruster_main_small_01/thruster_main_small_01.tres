@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://ct6xk42t76h77"]
+
+[ext_resource type="PackedScene" uid="uid://5euhd5fsheqp" path="res://Scenes/Modules/2_THRUSTER/thruster_main_small_01/thruster_main_small_01.tscn" id="1_233hv"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_nsid4"]
+
+[resource]
+script = ExtResource("1_nsid4")
+id = "thruster_main_small_01"
+name = "Liquid Fuel Small Thruster"
+desc = "Powered by liquid fuel. Provides 540kN of forward trust, and 200kN of manouvering and braking thrust."
+category = 2
+object = ExtResource("1_233hv")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 2,
+"blastproof_modules": 4,
+"credits": 0,
+"electrical_components": 1,
+"magnetic_elements": 2,
+"scrap": 80,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 200,
+"integrity": 1000,
+"mass": 100,
+"power": -2
+}
+fixed_rotation = false

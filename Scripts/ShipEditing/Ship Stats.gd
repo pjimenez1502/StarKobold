@@ -48,17 +48,22 @@ func calculate_thrust_vectors():
 	#print(thrust_modules)
 	
 	for thruster in thrust_modules:
-		#if thruster["module"] != null:
-		if thruster["enabled"]:
-			match thruster["rotation"]:
-				0:#FORWARD
-					longitudinal_thrust.x += thruster["module"].thrust
-				2:#BACK
-					longitudinal_thrust.y += thruster["module"].thrust
-				1:#LEFT
-					lateral_thrust.y += thruster["module"].thrust
-				3:#RIGHT
-					lateral_thrust.x += thruster["module"].thrust
+		longitudinal_thrust.x += thruster["module"].thrust.x
+		longitudinal_thrust.y += thruster["module"].thrust.y
+		lateral_thrust.x += thruster["module"].thrust.z
+		lateral_thrust.x += thruster["module"].thrust.w
+		#
+		##if thruster["module"] != null:
+		#if thruster["enabled"]:
+			#match thruster["rotation"]:
+				#0:#FORWARD
+					#longitudinal_thrust.x += thruster["module"].thrust
+				#2:#BACK
+					#longitudinal_thrust.y += thruster["module"].thrust
+				#1:#LEFT
+					#lateral_thrust.y += thruster["module"].thrust
+				#3:#RIGHT
+					#lateral_thrust.x += thruster["module"].thrust
 
 func calculate_power():
 	available_power = 0

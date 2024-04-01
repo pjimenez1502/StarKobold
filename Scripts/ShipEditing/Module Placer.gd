@@ -32,7 +32,7 @@ func select_module(id):
 func show_preview_module(module):
 	module_placing_preview.visible = true
 	preview_instance = module.object.instantiate()
-	preview_mesh.mesh = preview_instance.get_node("mesh").get_child(0).mesh
+	preview_mesh.mesh = preview_instance.get_node("mesh").get_child(0).get_child(0).mesh
 	
 	preview_mesh.set_surface_override_material(0, PLACEMENT_CHECK_MAT)
 	model_green()

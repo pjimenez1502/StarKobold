@@ -44,24 +44,18 @@ func check_number_keys(event):
 	match current_category:
 		1:
 			if event.is_action_pressed("1"):
-				select_module("floor_01")
-			if event.is_action_pressed("2"):
-				select_module("wall_01")
-			if event.is_action_pressed("3"):
-				select_module("door_01")
-		
+				select_module("cockpit_small_01")
 		2:
 			if event.is_action_pressed("1"):
-				select_module("helmChair_01")
-				
+				select_module("reactor_01")
 		3:
 			if event.is_action_pressed("1"):
-				select_module("mainthruster_01")
+				select_module("thruster_main_small_01")
 			if event.is_action_pressed("2"):
-				select_module("manouverthruster_01")
+				pass
 		4:
 			if event.is_action_pressed("1"):
-				select_module("reactor_01")
+				pass
 		
 
 func check_section_selectors(event):

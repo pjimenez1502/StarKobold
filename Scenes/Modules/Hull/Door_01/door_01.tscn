@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://ckgy7fiiqthoy"]
-
-[ext_resource type="PackedScene" uid="uid://dgpdkb7vxqyv6" path="res://Scenes/Modules/Hull/Door_01/Door_01.glb" id="1_bcrg6"]
-
-[node name="Door01" type="Node3D"]
-
-[node name="mesh" parent="." instance=ExtResource("1_bcrg6")]

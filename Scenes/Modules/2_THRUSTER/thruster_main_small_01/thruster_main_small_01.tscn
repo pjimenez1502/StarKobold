@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://5euhd5fsheqp"]
+
+[ext_resource type="PackedScene" uid="uid://1r3hj2mwolos" path="res://Scenes/Modules/2_THRUSTER/thruster_main_small_01/thruster_main_small_01.glb" id="1_kwdni"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/module_properties.gd" id="1_us7fm"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="3_35n5d"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/ThrusterBehaviour.gd" id="4_ceo8r"]
+
+[node name="ThrusterMainSmall01" type="Node3D" node_paths=PackedStringArray("behaviours")]
+script = ExtResource("1_us7fm")
+behaviours = [NodePath("Power"), NodePath("Thrust")]
+
+[node name="mesh" parent="." instance=ExtResource("1_kwdni")]
+
+[node name="Power" type="Node" parent="."]
+script = ExtResource("3_35n5d")
+
+[node name="Thrust" type="Node" parent="."]
+script = ExtResource("4_ceo8r")
+thrust = Vector4(540, 200, 200, 200)

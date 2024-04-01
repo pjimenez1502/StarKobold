@@ -1621,11 +1621,33 @@ theme_override_font_sizes/font_size = 16
 text = "Hardpoints"
 horizontal_alignment = 1
 
+[node name="Weapons" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
+text = "Weapon"
+horizontal_alignment = 1
+
 [node name="ScrollContainer" type="ScrollContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
 [node name="HardpointsEntryContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Utility" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 16
+text = "Utility"
+horizontal_alignment = 1
+
+[node name="ScrollContainer2" type="ScrollContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UtilityEntryContainer" type="VBoxContainer" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer/ScrollContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
 

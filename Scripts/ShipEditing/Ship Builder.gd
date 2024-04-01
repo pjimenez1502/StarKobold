@@ -8,17 +8,17 @@ extends Node
 
 ## Modules installed on ship:
 
-var load_module_list := [
-	{ "id": 0, "module_id": "helmChair_01", "position": Vector3i(0, 0, -1), "rotation": 0 }, 
-	{ "id": 1, "module_id": "wall_01", "position": Vector3i(1, 0, 0), "rotation": 0 }, 
-	{ "id": 2, "module_id": "wall_01", "position": Vector3i(-2, 0, 0), "rotation": 0 }, 
-	{ "id": 3, "module_id": "wall_01", "position": Vector3i(-2, 0, 1), "rotation": 0 }, 
-	{ "id": 4, "module_id": "wall_01", "position": Vector3i(1, 0, 1), "rotation": 0 }, 
-	{ "id": 5, "module_id": "floor_01", "position": Vector3i(0, 0, 1), "rotation": 0 }, 
-	{ "id": 6, "module_id": "floor_01", "position": Vector3i(-1, 0, 1), "rotation": 0 }, 
-	{ "id": 7, "module_id": "floor_01", "position": Vector3i(-1, 0, 0), "rotation": 0 }, 
-	{ "id": 8, "module_id": "floor_01", "position": Vector3i(0, 0, 0), "rotation": 0 }
-]
+#var load_module_list := [
+	#{ "id": 0, "module_id": "helmChair_01", "position": Vector3i(0, 0, -1), "rotation": 0 }, 
+	#{ "id": 1, "module_id": "wall_01", "position": Vector3i(1, 0, 0), "rotation": 0 }, 
+	#{ "id": 2, "module_id": "wall_01", "position": Vector3i(-2, 0, 0), "rotation": 0 }, 
+	#{ "id": 3, "module_id": "wall_01", "position": Vector3i(-2, 0, 1), "rotation": 0 }, 
+	#{ "id": 4, "module_id": "wall_01", "position": Vector3i(1, 0, 1), "rotation": 0 }, 
+	#{ "id": 5, "module_id": "floor_01", "position": Vector3i(0, 0, 1), "rotation": 0 }, 
+	#{ "id": 6, "module_id": "floor_01", "position": Vector3i(-1, 0, 1), "rotation": 0 }, 
+	#{ "id": 7, "module_id": "floor_01", "position": Vector3i(-1, 0, 0), "rotation": 0 }, 
+	#{ "id": 8, "module_id": "floor_01", "position": Vector3i(0, 0, 0), "rotation": 0 }
+#]
 
 var module_list := []
 
@@ -29,6 +29,7 @@ func _ready():
 	generate_occupied_list()
 
 func generate_occupied_list():
+	Resources_Manager.no_costs = true
 	for module in load_module_list:
 		var module_data = find_module_by_id(module["module_id"])
 		if !module_data:
@@ -36,7 +37,8 @@ func generate_occupied_list():
 		else:
 			#fill_occupied_tiles_from_module(module_data, module["position"])
 			instantiate_module(module["module_id"], module["position"], module["rotation"])
-
+	Resources_Manager.no_costs = false
+	
 func find_module_by_id(id):
 	for module_data in module_placer.MODULES_DATA:
 		if module_data["id"] == id:
@@ -77,7 +79,8 @@ func instantiate_module(module_id, position, rotation_index):
 	
 	var instance = module_data.object.instantiate()
 	ship_grid_map.add_child(instance)
-	instance.position = position
+	var gridmap_tile_size = 2
+	instance.position = position * gridmap_tile_size
 	instance.rotation = Vector3(0, deg_to_rad(90*rotation_index), 0)
 	
 	var module_instance_id = fill_occupied_tiles_from_module(module_data, position, instance, rotation_index)
@@ -102,6 +105,8 @@ func remove_module(position):
 	ship_stats.update_mass(-tile_to_remove.module_data.stats["mass"])
 	return_resources(tile_to_remove.module_data.costs)
 	
+	remove_from_module_list(tile_to_remove["id"])
+	
 	var tiles_to_delete : Array ## erase occupied tiles
 	for tile in occupied_tiles:
 		if tile.instance == instance_to_remove:
@@ -114,8 +119,11 @@ func remove_module(position):
 
 func return_resources(module_costs):
 	Resources_Manager.return_resources(module_costs)
-	
 
+func remove_from_module_list(module_id):
+	for module_entry in module_list:
+		if module_entry["id"] == module_id:
+			module_list.erase(module_entry)
 
 
 func implement_module_behaviour(module_instance, position, rotation_index, module_instance_id, module_data):
@@ -175,3 +183,7 @@ func _unhandled_input(event):
 	if event is InputEventKey:
 		if event.pressed and event.keycode == KEY_P:
 			print(module_list)
+
+
+var load_module_list = []
+#var load_module_list = [{ "id": 1, "module_id": "helmChair_01", "position": Vector3i(0, 0, -2), "rotation": 0 }, { "id": 2, "module_id": "wall_01", "position": Vector3i(0, 0, -3), "rotation": 0 }, { "id": 3, "module_id": "wall_01", "position": Vector3i(-1, 0, -3), "rotation": 0 }, { "id": 4, "module_id": "wall_01", "position": Vector3i(1, 0, -3), "rotation": 0 }, { "id": 5, "module_id": "wall_01", "position": Vector3i(1, 0, -2), "rotation": 0 }, { "id": 6, "module_id": "wall_01", "position": Vector3i(-1, 0, -2), "rotation": 0 }, { "id": 7, "module_id": "wall_01", "position": Vector3i(-1, 0, -1), "rotation": 0 }, { "id": 8, "module_id": "wall_01", "position": Vector3i(1, 0, -1), "rotation": 0 }, { "id": 10, "module_id": "wall_01", "position": Vector3i(-1, 0, 0), "rotation": 0 }, { "id": 11, "module_id": "floor_01", "position": Vector3i(0, 0, -1), "rotation": 0 }, { "id": 12, "module_id": "door_01", "position": Vector3i(0, 0, 0), "rotation": 1 }, { "id": 13, "module_id": "wall_01", "position": Vector3i(2, 0, 0), "rotation": 0 }, { "id": 14, "module_id": "wall_01", "position": Vector3i(1, 0, 0), "rotation": 0 }, { "id": 15, "module_id": "wall_01", "position": Vector3i(-2, 0, 0), "rotation": 0 }, { "id": 16, "module_id": "wall_01", "position": Vector3i(2, 0, 1), "rotation": 0 }, { "id": 17, "module_id": "wall_01", "position": Vector3i(2, 0, 2), "rotation": 0 }, { "id": 18, "module_id": "wall_01", "position": Vector3i(-2, 0, 1), "rotation": 0 }, { "id": 19, "module_id": "wall_01", "position": Vector3i(-2, 0, 2), "rotation": 0 }, { "id": 20, "module_id": "wall_01", "position": Vector3i(-2, 0, 3), "rotation": 0 }, { "id": 21, "module_id": "wall_01", "position": Vector3i(-1, 0, 3), "rotation": 0 }, { "id": 22, "module_id": "wall_01", "position": Vector3i(0, 0, 3), "rotation": 0 }, { "id": 23, "module_id": "wall_01", "position": Vector3i(1, 0, 3), "rotation": 0 }, { "id": 24, "module_id": "wall_01", "position": Vector3i(2, 0, 3), "rotation": 0 }, { "id": 25, "module_id": "floor_01", "position": Vector3i(0, 0, 1), "rotation": 0 }, { "id": 26, "module_id": "floor_01", "position": Vector3i(-1, 0, 1), "rotation": 0 }, { "id": 27, "module_id": "floor_01", "position": Vector3i(-1, 0, 2), "rotation": 0 }, { "id": 28, "module_id": "floor_01", "position": Vector3i(1, 0, 1), "rotation": 0 }, { "id": 29, "module_id": "floor_01", "position": Vector3i(1, 0, 2), "rotation": 0 }, { "id": 30, "module_id": "reactor_01", "position": Vector3i(0, 0, 2), "rotation": 1 }, { "id": 31, "module_id": "manouverthruster_01", "position": Vector3i(3, 0, 1), "rotation": 2 }, { "id": 32, "module_id": "manouverthruster_01", "position": Vector3i(3, 0, 2), "rotation": 1 }, { "id": 33, "module_id": "manouverthruster_01", "position": Vector3i(-3, 0, 1), "rotation": 2 }, { "id": 34, "module_id": "manouverthruster_01", "position": Vector3i(-3, 0, 2), "rotation": 3 }, { "id": 35, "module_id": "mainthruster_01", "position": Vector3i(3, 0, 3), "rotation": 0 }, { "id": 36, "module_id": "mainthruster_01", "position": Vector3i(-3, 0, 3), "rotation": 0 }]

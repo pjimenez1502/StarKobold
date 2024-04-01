@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://dpnkrrlift4kk"]
+
+[ext_resource type="PackedScene" uid="uid://cqiate3fj770d" path="res://Scenes/Modules/0_COCKPIT/cockpit_small_01/cockpit_small_01.tscn" id="1_j2hhp"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_xb7ro"]
+
+[resource]
+script = ExtResource("1_xb7ro")
+id = "cockpit_small_01"
+name = "Small Cockpit"
+desc = "Small and uncomfortable. A small generator below the seat provides 20MWh when it is not on fire."
+category = 0
+object = ExtResource("1_j2hhp")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 0,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 0,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 2000,
+"fuelconsumption": 20,
+"integrity": 1000,
+"mass": 60,
+"power": 20
+}
+fixed_rotation = false

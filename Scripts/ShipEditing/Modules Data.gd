@@ -2,7 +2,7 @@ extends Resource
 
 class_name Module_Resource
 
-enum ModuleCategories { WALL, FLOOR, SYSTEM, THRUST, POWER, HARDPOINT}
+enum ModuleCategories { COCKPIT, POWER, THRUSTER, CARGO, HALLWAY, HABITATION, HARDPOINT, UTILITY}
 
 @export var id : String
 @export var name : String
@@ -24,5 +24,7 @@ enum ModuleCategories { WALL, FLOOR, SYSTEM, THRUST, POWER, HARDPOINT}
 	"mass": 0,
 	"integrity": 1000,
 	"power": 0,
+	"fuelcapacity": 0, ## in KG
+	"fuelconsumption": 0, ## in KG per min
 }
 @export var fixed_rotation : bool

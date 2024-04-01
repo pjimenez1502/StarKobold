@@ -1,0 +1,28 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://b0hcsh2wjrt7q"]
+
+[ext_resource type="PackedScene" uid="uid://cw168qfexk8g3" path="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.tscn" id="1_ghuey"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="2_1c326"]
+
+[resource]
+script = ExtResource("2_1c326")
+id = "reactor_01"
+name = "Small Reactor"
+desc = "Provides Power while using up fuel."
+category = 1
+object = ExtResource("1_ghuey")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 8,
+"magnetic_elements": 4,
+"scrap": 20,
+"semiconductive_fibers": 2
+}
+stats = {
+"integrity": 1000,
+"mass": 100,
+"power": 80
+}
+fixed_rotation = false
