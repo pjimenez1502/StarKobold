@@ -8,6 +8,30 @@
       "resource_local_to_scene": true,
       "resource_name": true
     },
+    "res://Scenes/Modules/0_COCKPIT/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/0_COCKPIT/cockpit_small_01/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/1_POWER/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/2_THRUSTER/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/4_HALLWAY/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/Hardpoint/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://Scenes/Modules/Hull/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -31,11 +55,14 @@
   },
   "recent_paths": [
     "res://Scenes/Modules/",
-    "res://Scenes/Modules/Hull/",
-    "res://Scenes/Modules/System/",
-    "res://Scenes/Modules/Power/",
-    "res://Scenes/Modules/Thrust/",
-    "res://Scenes/Modules/Hardpoint/"
+    "res://Scenes/Modules/1_POWER/",
+    "res://Scenes/Modules/2_THRUSTER/",
+    "res://Scenes/Modules/3_CARGO/",
+    "res://Scenes/Modules/4_HALLWAY/",
+    "res://Scenes/Modules/5_HABITATION/",
+    "res://Scenes/Modules/6_HARDPOINT/",
+    "res://Scenes/Modules/7_UTILITY/",
+    "res://Scenes/Modules/0_COCKPIT/"
   ],
   "table_functions": {
     "filter": [

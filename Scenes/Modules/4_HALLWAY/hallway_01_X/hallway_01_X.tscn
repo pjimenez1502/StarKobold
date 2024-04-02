@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://baskl81cretrt"]
+
+[ext_resource type="PackedScene" uid="uid://clno1ejpc5085" path="res://Scenes/Modules/4_HALLWAY/hallway_01_X/hallway_01_X.glb" id="1_qaal0"]
+
+[node name="Hallway01X" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_qaal0")]

@@ -151,7 +151,6 @@ offset_bottom = 80.0
 texture = ExtResource("8_5obta")
 
 [node name="Edit Overlay" type="Control" parent="Game Overlays"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -540,23 +539,32 @@ text = "100"
 
 [node name="ShipStats" type="Control" parent="Game Overlays/Edit Overlay"]
 layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 28.0
-offset_top = -175.0
-offset_right = 68.0
-offset_bottom = -135.0
-grow_vertical = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -154.0
+offset_top = 16.0
+offset_right = 154.0
+offset_bottom = 56.0
+grow_horizontal = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
-layout_mode = 0
-offset_top = -44.0
-offset_right = 131.0
-offset_bottom = 40.0
+[node name="VBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -132.0
+offset_top = -20.0
+offset_right = 132.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
 
 [node name="Weight" type="Control" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer"]
-custom_minimum_size = Vector2(130, 40)
+custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Weight"]
@@ -583,7 +591,7 @@ text = "nan"
 horizontal_alignment = 1
 
 [node name="Power" type="Control" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer"]
-custom_minimum_size = Vector2(130, 40)
+custom_minimum_size = Vector2(160, 40)
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Power"]
@@ -607,6 +615,543 @@ theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "nan"
 horizontal_alignment = 1
+
+[node name="ModuleSelector" type="Control" parent="Game Overlays/Edit Overlay"]
+custom_minimum_size = Vector2(740, 60)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -370.0
+offset_top = -140.0
+offset_right = 370.0
+offset_bottom = -16.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="1" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "1. Cockpits"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/1/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="2" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "2. Power"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/2/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="3" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "3. Thrust"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/3/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="4" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "4. Cargo"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/4/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="5" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "5. Hallway"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/5/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="6" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "7. Habitation"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/6/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="7" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "8. Hardpoint"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/7/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
+
+[node name="8" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer"]
+layout_mode = 2
+
+[node name="Category" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8"]
+custom_minimum_size = Vector2(100, 30)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8/Category"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "9. Utility"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Module" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8"]
+custom_minimum_size = Vector2(100, 80)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8/Module"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/HBoxContainer/8/Module"]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 0
+offset_right = 80.0
+offset_bottom = 80.0
+texture = ExtResource("8_tivam")
 
 [node name="CurrentCategory" type="Control" parent="Game Overlays/Edit Overlay"]
 custom_minimum_size = Vector2(100, 100)
@@ -635,186 +1180,6 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="ModuleSelector" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory"]
-custom_minimum_size = Vector2(740, 60)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = 75.0
-offset_top = -30.0
-offset_right = 815.0
-offset_bottom = 30.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/separation = 16
-
-[node name="module_1" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_1"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="module_2" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_2"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_2"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="module_3" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_3"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_3"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="module_4" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_4"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="module_5" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_5"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="module_6" type="Control" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory/ModuleSelector/HBoxContainer/module_6"]
 visible = false
 custom_minimum_size = Vector2(80, 80)
 layout_mode = 0

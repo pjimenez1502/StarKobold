@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://bjtqlb7kayb1p"]
+
+[ext_resource type="PackedScene" uid="uid://c805n5wer34gy" path="res://Scenes/Modules/4_HALLWAY/hallway_01_n/hallway_01_n.tscn" id="1_4sqei"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_dx662"]
+
+[resource]
+script = ExtResource("1_dx662")
+id = "hallway_01"
+name = "Hallway"
+desc = "Straight hallway."
+category = 4
+object = ExtResource("1_4sqei")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 40,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 0,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 20,
+"power": 0
+}
+fixed_rotation = false

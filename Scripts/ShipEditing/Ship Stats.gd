@@ -23,6 +23,7 @@ func _ready():
 	update_show_stats()
 
 
+
 func add_thruster_module(module_data):
 	thrust_modules.append(module_data)
 	calculate_thrust_vectors()
@@ -41,42 +42,6 @@ func add_powered_module(module_data):
 	#pass
 
 
-
-func calculate_thrust_vectors():
-	longitudinal_thrust = Vector2.ZERO
-	lateral_thrust = Vector2.ZERO
-	#print(thrust_modules)
-	
-	for thruster in thrust_modules:
-		longitudinal_thrust.x += thruster["module"].thrust.x
-		longitudinal_thrust.y += thruster["module"].thrust.y
-		lateral_thrust.x += thruster["module"].thrust.z
-		lateral_thrust.x += thruster["module"].thrust.w
-		#
-		##if thruster["module"] != null:
-		#if thruster["enabled"]:
-			#match thruster["rotation"]:
-				#0:#FORWARD
-					#longitudinal_thrust.x += thruster["module"].thrust
-				#2:#BACK
-					#longitudinal_thrust.y += thruster["module"].thrust
-				#1:#LEFT
-					#lateral_thrust.y += thruster["module"].thrust
-				#3:#RIGHT
-					#lateral_thrust.x += thruster["module"].thrust
-
-func calculate_power():
-	available_power = 0
-	drained_power = 0
-	
-	for generator_module in generator_modules:
-		if generator_module["enabled"]:
-			available_power += generator_module["module"].power
-	
-	for powered_module in powered_modules:
-		if powered_module["enabled"]:
-			drained_power += powered_module["module"].power
-	update_show_stats()
 
 func remove_module(module):
 	if !module is module_properties:
@@ -106,6 +71,32 @@ func remove_behaviours(module_behaviours):
 		
 		#if behaviour is hardpoint_behaviour:
 					#OverlaysManager.remove_controlpanel_powered_entry(power_module["module_inst_id"])
+	update_show_stats()
+
+
+
+func calculate_thrust_vectors():
+	longitudinal_thrust = Vector2.ZERO
+	lateral_thrust = Vector2.ZERO
+	#print(thrust_modules)
+	
+	for thruster in thrust_modules:
+		longitudinal_thrust.x += thruster["module"].thrust.x
+		longitudinal_thrust.y += thruster["module"].thrust.y
+		lateral_thrust.x += thruster["module"].thrust.z
+		lateral_thrust.x += thruster["module"].thrust.w
+
+func calculate_power():
+	available_power = 0
+	drained_power = 0
+	
+	for generator_module in generator_modules:
+		if generator_module["enabled"]:
+			available_power += generator_module["module"].power
+	
+	for powered_module in powered_modules:
+		if powered_module["enabled"]:
+			drained_power += powered_module["module"].power
 	update_show_stats()
 
 func update_mass(value):

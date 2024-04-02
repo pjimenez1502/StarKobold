@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://Scripts/Input/ShipEditInput.gd" id="7_xcgv0"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Module Placer.gd" id="8_dl5mh"]
 [ext_resource type="Resource" uid="uid://dpnkrrlift4kk" path="res://Scenes/Modules/0_COCKPIT/cockpit_small_01/cockpit_small_01.tres" id="10_bonms"]
-[ext_resource type="Resource" uid="uid://b0hcsh2wjrt7q" path="res://Scenes/Modules/1_POWER/reactor_01/reactor_01.tres" id="11_00b5v"]
+[ext_resource type="Resource" uid="uid://b0hcsh2wjrt7q" path="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.tres" id="11_ntiln"]
 [ext_resource type="Resource" uid="uid://ct6xk42t76h77" path="res://Scenes/Modules/2_THRUSTER/thruster_main_small_01/thruster_main_small_01.tres" id="12_e53um"]
 [ext_resource type="Resource" uid="uid://bjtqlb7kayb1p" path="res://Scenes/Modules/4_HALLWAY/hallway_01_n/hallway_01_n.tres" id="13_pl0oa"]
 [ext_resource type="Resource" uid="uid://cyl8o5w0brvs1" path="res://Scenes/Modules/4_HALLWAY/hallway_01_corner/hallway_01_corner.tres" id="14_rqqmo"]
@@ -96,7 +96,7 @@ script = ExtResource("7_uhsho")
 
 [node name="Module Placer" type="Node" parent="PlayerShip/Ship Editing Input"]
 script = ExtResource("8_dl5mh")
-MODULES_DATA = Array[Resource]([ExtResource("10_bonms"), ExtResource("11_00b5v"), ExtResource("12_e53um"), ExtResource("13_pl0oa"), ExtResource("14_rqqmo"), ExtResource("15_cecur")])
+MODULES_DATA = Array[Resource]([ExtResource("10_bonms"), ExtResource("11_ntiln"), ExtResource("12_e53um"), ExtResource("13_pl0oa"), ExtResource("14_rqqmo"), ExtResource("15_cecur")])
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="PlayerShip"]
 navigation_mesh = SubResource("NavigationMesh_8nobd")

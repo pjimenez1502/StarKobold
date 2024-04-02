@@ -5,24 +5,9 @@ extends Node
 @onready var ship_navigation_region = $"../../NavigationRegion3D"
 @onready var ship_stats = $"../../Ship Stats"
 
-
-## Modules installed on ship:
-
-#var load_module_list := [
-	#{ "id": 0, "module_id": "helmChair_01", "position": Vector3i(0, 0, -1), "rotation": 0 }, 
-	#{ "id": 1, "module_id": "wall_01", "position": Vector3i(1, 0, 0), "rotation": 0 }, 
-	#{ "id": 2, "module_id": "wall_01", "position": Vector3i(-2, 0, 0), "rotation": 0 }, 
-	#{ "id": 3, "module_id": "wall_01", "position": Vector3i(-2, 0, 1), "rotation": 0 }, 
-	#{ "id": 4, "module_id": "wall_01", "position": Vector3i(1, 0, 1), "rotation": 0 }, 
-	#{ "id": 5, "module_id": "floor_01", "position": Vector3i(0, 0, 1), "rotation": 0 }, 
-	#{ "id": 6, "module_id": "floor_01", "position": Vector3i(-1, 0, 1), "rotation": 0 }, 
-	#{ "id": 7, "module_id": "floor_01", "position": Vector3i(-1, 0, 0), "rotation": 0 }, 
-	#{ "id": 8, "module_id": "floor_01", "position": Vector3i(0, 0, 0), "rotation": 0 }
-#]
-
 var module_list := []
-
 var occupied_tiles := [] ##id is comprised of id:"helm_01" and subId:"#1" to differentiate multiple modules of same type
+
 
 
 func _ready():
@@ -65,6 +50,7 @@ func get_next_module_id():
 	return occupied_tiles[occupied_tiles.size()-1]["id"] +1
 
 
+
 ## PLACE MODULE
 func instantiate_module(module_id, position, rotation_index):
 	var module_data = find_module_by_id(module_id)
@@ -89,6 +75,31 @@ func instantiate_module(module_id, position, rotation_index):
 	
 	Resources_Manager.remove_resourcelist(module_data.costs)
 	ship_navigation_region.bake_navigation_mesh()
+
+func implement_module_behaviour(module_instance, position, rotation_index, module_instance_id, module_data):
+	if module_instance is module_properties:
+		for module_behaviour in module_instance.behaviours:
+			
+			if module_behaviour is adaptivewall_behaviour: ## CHECK DIRECT SURROUNDING TILES FOR WALLS
+				var surrounding_tiles = get_surrounding_tile_data(position)
+				module_behaviour.connect_surrounding_walls(surrounding_tiles) ## CHECK FOCUSED WALL
+				update_surrounding_walls(surrounding_tiles) ## UPDATE SURROUNDING WALLS
+				
+			if module_behaviour is thruster_behaviour:
+				ship_stats.add_thruster_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "rotation": rotation_index, "enabled": true})
+				
+			if module_behaviour is power_behaviour:
+				module_behaviour.set_value_from_stats(module_data.stats["power"])
+				if module_data.stats["power"] > 0:
+					ship_stats.add_generator_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "enabled": true})
+					
+				if module_data.stats["power"] < 0:
+					ship_stats.add_powered_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name ,"enabled": true})
+				
+				
+	ship_stats.update_mass(module_data.stats["mass"])
+
+
 
 ## REMOVE MODULE
 func remove_module(position):
@@ -117,6 +128,8 @@ func remove_module(position):
 	ship_navigation_region.bake_navigation_mesh()
 	instance_to_remove.queue_free()
 
+
+
 func return_resources(module_costs):
 	Resources_Manager.return_resources(module_costs)
 
@@ -124,30 +137,6 @@ func remove_from_module_list(module_id):
 	for module_entry in module_list:
 		if module_entry["id"] == module_id:
 			module_list.erase(module_entry)
-
-
-func implement_module_behaviour(module_instance, position, rotation_index, module_instance_id, module_data):
-	if module_instance is module_properties:
-		for module_behaviour in module_instance.behaviours:
-			
-			if module_behaviour is adaptivewall_behaviour: ## CHECK DIRECT SURROUNDING TILES FOR WALLS
-				var surrounding_tiles = get_surrounding_tile_data(position)
-				module_behaviour.connect_surrounding_walls(surrounding_tiles) ## CHECK FOCUSED WALL
-				update_surrounding_walls(surrounding_tiles) ## UPDATE SURROUNDING WALLS
-				
-			if module_behaviour is thruster_behaviour:
-				ship_stats.add_thruster_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "rotation": rotation_index, "enabled": true})
-				
-			if module_behaviour is power_behaviour:
-				module_behaviour.set_value_from_stats(module_data.stats["power"])
-				if module_data.stats["power"] > 0:
-					ship_stats.add_generator_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name, "enabled": true})
-					
-				if module_data.stats["power"] < 0:
-					ship_stats.add_powered_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name ,"enabled": true})
-				
-				
-	ship_stats.update_mass(module_data.stats["mass"])
 
 func fetch_tile_by_pos(position):
 	for tile in occupied_tiles:
@@ -178,6 +167,8 @@ func update_surrounding_walls(surrounding_tiles):
 				if module_behaviour is adaptivewall_behaviour:
 					var new_surrounding_tiles = get_surrounding_tile_data(surrounding_tiles[tile]["position"])
 					module_behaviour.connect_surrounding_walls(new_surrounding_tiles)
+
+
 
 func _unhandled_input(event):
 	if event is InputEventKey:

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://lih140ilu85v"
-path="res://.godot/imported/reactor_01.glb-2bea217b77dbb3c603ab96e74cbe9e29.scn"
+path="res://.godot/imported/reactor_01.glb-9e045abc029c83cdcd4abfdca9960fe8.scn"
 
 [deps]
 
-source_file="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.glb"
-dest_files=["res://.godot/imported/reactor_01.glb-2bea217b77dbb3c603ab96e74cbe9e29.scn"]
+source_file="res://Scenes/Modules/1_POWER/reactor_01/reactor_01.glb"
+dest_files=["res://.godot/imported/reactor_01.glb-9e045abc029c83cdcd4abfdca9960fe8.scn"]
 
 [params]
 

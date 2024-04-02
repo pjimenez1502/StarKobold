@@ -1,14 +1,14 @@
 [gd_scene load_steps=4 format=3 uid="uid://cw168qfexk8g3"]
 
-[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/module_properties.gd" id="1_g7kcq"]
-[ext_resource type="PackedScene" uid="uid://lih140ilu85v" path="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.glb" id="2_d3hk8"]
-[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="3_lu6co"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/module_properties.gd" id="1_yxyad"]
+[ext_resource type="PackedScene" uid="uid://lih140ilu85v" path="res://Scenes/Modules/1_POWER/reactor_01/reactor_01.glb" id="2_ypuwy"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="3_y54vl"]
 
 [node name="Reactor01" type="Node3D" node_paths=PackedStringArray("behaviours")]
-script = ExtResource("1_g7kcq")
+script = ExtResource("1_yxyad")
 behaviours = [NodePath("Power_Behaviour")]
 
-[node name="mesh" parent="." instance=ExtResource("2_d3hk8")]
+[node name="mesh" parent="." instance=ExtResource("2_ypuwy")]
 
 [node name="Power_Behaviour" type="Node" parent="."]
-script = ExtResource("3_lu6co")
+script = ExtResource("3_y54vl")

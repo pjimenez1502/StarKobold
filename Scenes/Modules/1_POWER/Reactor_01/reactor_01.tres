@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://b0hcsh2wjrt7q"]
 
-[ext_resource type="PackedScene" uid="uid://cw168qfexk8g3" path="res://Scenes/Modules/1_POWER/Reactor_01/reactor_01.tscn" id="1_ghuey"]
+[ext_resource type="PackedScene" uid="uid://cw168qfexk8g3" path="res://Scenes/Modules/1_POWER/reactor_01/reactor_01.tscn" id="1_ghuey"]
 [ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="2_1c326"]
 
 [resource]
