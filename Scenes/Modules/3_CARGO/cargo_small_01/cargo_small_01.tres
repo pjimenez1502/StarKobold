@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://c6mts1o0m5jp8"]
+
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_2soyx"]
+[ext_resource type="PackedScene" uid="uid://s3d3oa7psjac" path="res://Scenes/Modules/3_CARGO/cargo_small_01/cargo_small_01.tscn" id="1_8o6fb"]
+
+[resource]
+script = ExtResource("1_2soyx")
+id = "cargo_small_01"
+name = "Small Cargo Container"
+desc = "A small Cargo Container. Can only be accessed from the outside."
+category = 3
+object = ExtResource("1_8o6fb")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 1,
+"scrap": 80,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 100,
+"power": 0
+}
+fixed_rotation = false

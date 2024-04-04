@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://ii5p0olr0pnc"]
+
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_etstn"]
+[ext_resource type="PackedScene" uid="uid://b1p1djoqd5cuo" path="res://Scenes/Modules/3_CARGO/fuel_small_01/fuel_small_01.tscn" id="1_xbn13"]
+
+[resource]
+script = ExtResource("1_etstn")
+id = "fuel_small_01"
+name = "Small Fuel Tank"
+desc = "Aditional fuel tanks. Capacity for 8T of fuel."
+category = 3
+object = ExtResource("1_xbn13")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 2,
+"blastproof_modules": 1,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 80,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 8000,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 80,
+"power": 0
+}
+fixed_rotation = false

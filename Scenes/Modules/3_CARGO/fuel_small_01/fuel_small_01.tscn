@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1p1djoqd5cuo"]
+
+[ext_resource type="PackedScene" uid="uid://dbih8weo8j2m0" path="res://Scenes/Modules/3_CARGO/fuel_small_01/fuel_small_01.glb" id="1_0mfsr"]
+
+[node name="FuelSmall01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_0mfsr")]
