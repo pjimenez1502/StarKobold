@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://duyewfuvx1n0"]
 
-[ext_resource type="Script" path="res://Scenes/ControlPanel_Module_Entry.gd" id="1_3k7m8"]
+[ext_resource type="Script" path="res://Scripts/UI/ControlPanel_Module_Entry.gd" id="1_3k7m8"]
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="2_dt6nv"]
 [ext_resource type="FontFile" uid="uid://dvmip81rb3aym" path="res://Assets/Font/PlayerSansMono8x8-Classic.ttf" id="3_x1acp"]
 [ext_resource type="Texture2D" uid="uid://b0eaepjnkreka" path="res://Assets/UI/Buttons/toggle_on.png" id="4_1hwif"]

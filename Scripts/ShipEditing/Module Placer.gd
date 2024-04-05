@@ -1,7 +1,7 @@
 extends Node
 
 const PLACEMENT_CHECK_MAT = preload("res://Shaders/Placement_Check_Mat.tres")
-@export var MODULES_DATA : Array[Resource]
+#@export var MODULES_DATA : Array[Resource]
 
 @onready var ship_builder = $"../Ship Builder"
 
@@ -22,7 +22,7 @@ func model_red():
 var selected_module
 
 func select_module(id):
-	for module in MODULES_DATA:
+	for module in ModulesDataManager.module_resources:
 		if module.id == id:
 			show_preview_module(module)
 			selected_module = module

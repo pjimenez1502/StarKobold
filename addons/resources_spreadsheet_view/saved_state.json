@@ -1,5 +1,9 @@
 {
   "hidden_columns": {
+    "res://Data/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://Scenes/Modules/": {
       "resource_local_to_scene": true,
       "resource_name": true
@@ -62,7 +66,8 @@
     "res://Scenes/Modules/5_HABITATION/",
     "res://Scenes/Modules/6_HARDPOINT/",
     "res://Scenes/Modules/7_UTILITY/",
-    "res://Scenes/Modules/0_COCKPIT/"
+    "res://Scenes/Modules/0_COCKPIT/",
+    "res://Data/"
   ],
   "table_functions": {
     "filter": [

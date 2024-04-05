@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=24 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
@@ -16,10 +16,11 @@
 [ext_resource type="Texture2D" uid="uid://b56oirf1878ir" path="res://Assets/UI/Backgrounds/menu_background.png" id="9_rwlss"]
 [ext_resource type="Script" path="res://Scripts/UI/Overlays/EditUI.gd" id="9_we0va"]
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="10_b1fbl"]
-[ext_resource type="FontFile" uid="uid://dvmip81rb3aym" path="res://Assets/Font/PlayerSansMono8x8-Classic.ttf" id="11_ohhv0"]
 [ext_resource type="Texture2D" uid="uid://ds02clpjj473a" path="res://Assets/UI/Icons/weight.png" id="11_rb680"]
 [ext_resource type="Texture2D" uid="uid://b2ixxgoya6ad" path="res://Assets/UI/Icons/power.png" id="12_wcnhe"]
 [ext_resource type="Script" path="res://Scripts/UI/DebugUI.gd" id="13_k0o72"]
+[ext_resource type="Script" path="res://Scenes/ModuleSelectorUI.gd" id="14_eywte"]
+[ext_resource type="Theme" uid="uid://sm747wse7omy" path="res://Scenes/Theme.tres" id="15_u1h01"]
 [ext_resource type="Script" path="res://Scripts/UI/ControlPanelUI.gd" id="20_ybac4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fntjo"]
@@ -61,6 +62,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 
 [node name="Kobold Overlay" type="Control" parent="Game Overlays"]
 visible = false
@@ -70,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 script = ExtResource("4_ekkll")
 
 [node name="Portrait" type="Control" parent="Game Overlays/Kobold Overlay"]
@@ -114,6 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 script = ExtResource("7_4ekkn")
 
 [node name="Portrait" type="Control" parent="Game Overlays/Ship Overlay"]
@@ -157,6 +161,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 script = ExtResource("9_we0va")
 
 [node name="Portrait" type="Control" parent="Game Overlays/Edit Overlay"]
@@ -166,6 +171,7 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 96.0
 offset_bottom = 96.0
+theme = ExtResource("15_u1h01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Portrait"]
 custom_minimum_size = Vector2(40, 40)
@@ -199,8 +205,9 @@ offset_left = 16.0
 offset_top = 120.0
 offset_right = 107.0
 offset_bottom = 386.0
+theme = ExtResource("15_u1h01")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/Resources"]
+[node name="Vertical" type="VBoxContainer" parent="Game Overlays/Edit Overlay/Resources"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -208,11 +215,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Scrap" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Scrap" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Scrap"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -226,7 +233,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Scrap"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -234,35 +241,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Scrap/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Scrap/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Scrp:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ScrapEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Scrap/MarginContainer/HBoxContainer"]
+[node name="ScrapEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Scrap/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
-[node name="Magnetic" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Magnetic" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Magnetic"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -276,7 +281,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Magnetic"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,31 +289,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Magnetic/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Magnetic/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "mgtc:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MagneticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Magnetic/MarginContainer/HBoxContainer"]
+[node name="MagneticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Magnetic/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="Electrical" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Electrical" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Electrical"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -322,7 +325,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Electrical"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -330,31 +333,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Electrical/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Electrical/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "elect:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ElectricalEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Electrical/MarginContainer/HBoxContainer"]
+[node name="ElectricalEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Electrical/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="Baroplastic" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Baroplastic" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Baroplastic"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -368,7 +369,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Baroplastic"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -376,35 +377,33 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Baroplastic/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Baroplastic/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "brps:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BaroplasticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Baroplastic/MarginContainer/HBoxContainer"]
+[node name="BaroplasticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Baroplastic/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 layout_mode = 2
 theme_override_constants/margin_top = 8
 
-[node name="Blastproof" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Blastproof" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Blastproof"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -418,7 +417,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Blastproof"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -426,31 +425,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Blastproof/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Blastproof/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "blpf:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="BlastproofsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Blastproof/MarginContainer/HBoxContainer"]
+[node name="BlastproofsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Blastproof/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="Semiconductive" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="Semiconductive" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/Semiconductive"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -464,7 +461,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Semiconductive"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -472,31 +469,29 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/Semiconductive/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Semiconductive/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "scon:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SemiconductivesEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/Semiconductive/MarginContainer/HBoxContainer"]
+[node name="SemiconductivesEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/Semiconductive/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100"
 
-[node name="uuh" type="Control" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer"]
+[node name="uuh" type="Control" parent="Game Overlays/Edit Overlay/Resources/Vertical"]
 custom_minimum_size = Vector2(80, 30)
 layout_mode = 2
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Vertical/uuh"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -510,7 +505,7 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/uuh"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -518,22 +513,340 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh/MarginContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Vertical/uuh/MarginContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh/MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/uuh/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "S:"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label2" type="Label" parent="Game Overlays/Edit Overlay/Resources/VBoxContainer/uuh/MarginContainer/HBoxContainer"]
+[node name="Label2" type="Label" parent="Game Overlays/Edit Overlay/Resources/Vertical/uuh/MarginContainer/HBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="Horizontal" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 215.5
+offset_top = -102.0
+offset_right = 807.5
+offset_bottom = -72.0
+grow_horizontal = 2
+
+[node name="Scrap" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Scrap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Scrap"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Scrap/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Scrap/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Scrp:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ScrapEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Scrap/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Magnetic" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Magnetic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Magnetic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Magnetic/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Magnetic/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "mgtc:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MagneticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Magnetic/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="Electrical" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Electrical"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Electrical"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Electrical/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Electrical/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "elect:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ElectricalEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Electrical/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="Baroplastic" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Baroplastic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Baroplastic"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Baroplastic/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Baroplastic/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "brps:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BaroplasticsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Baroplastic/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+layout_mode = 2
+theme_override_constants/margin_top = 8
+
+[node name="Blastproof" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Blastproof"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Blastproof"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Blastproof/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Blastproof/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "blpf:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="BlastproofsEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Blastproof/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="Semiconductive" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Semiconductive"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Semiconductive"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Semiconductive/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Semiconductive/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "scon:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SemiconductivesEditLabel" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/Semiconductive/MarginContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "100"
+
+[node name="uuh" type="Control" parent="Game Overlays/Edit Overlay/Resources/Horizontal"]
+custom_minimum_size = Vector2(80, 30)
+layout_mode = 2
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Resources/Horizontal/uuh"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/uuh"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/Resources/Horizontal/uuh/MarginContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/uuh/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "S:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Label2" type="Label" parent="Game Overlays/Edit Overlay/Resources/Horizontal/uuh/MarginContainer/HBoxContainer"]
+layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "100"
 
@@ -543,10 +856,11 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -154.0
-offset_top = 16.0
+offset_top = 53.0
 offset_right = 154.0
-offset_bottom = 56.0
+offset_bottom = 93.0
 grow_horizontal = 2
+theme = ExtResource("15_u1h01")
 
 [node name="VBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
 layout_mode = 1
@@ -585,7 +899,6 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "nan"
 horizontal_alignment = 1
@@ -611,7 +924,6 @@ expand_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "nan"
 horizontal_alignment = 1
@@ -630,22 +942,27 @@ offset_right = 370.0
 offset_bottom = -16.0
 grow_horizontal = 2
 grow_vertical = 0
+theme = ExtResource("15_u1h01")
+script = ExtResource("14_eywte")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector"]
 layout_mode = 0
 offset_left = -75.0
 offset_right = 837.0
 offset_bottom = 114.0
+theme = ExtResource("15_u1h01")
 
 [node name="Categories" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
 layout_mode = 2
+theme = ExtResource("15_u1h01")
 alignment = 1
 
-[node name="Category_1_Cockpits" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_1_Cockpits" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("15_u1h01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_1_Cockpits"]
 layout_mode = 1
@@ -668,13 +985,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "1. Cockpits"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_2_Power" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_2_Power" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -701,13 +1017,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "2. Power"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_3_Thrust" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_3_Thrust" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -734,13 +1049,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "3. Thrust"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_4_Cargo" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_4_Cargo" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -767,13 +1081,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "4. Cargo"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_5_Hallway" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_5_Hallway" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -800,13 +1113,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "5. Hallway"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_6_Habitation" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_6_Habitation" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -833,13 +1145,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "7. Habitation"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_7_Hardpoint" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_7_Hardpoint" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -866,13 +1177,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "8. Hardpoint"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Category_8_Utility" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
+[node name="Category_8_Utility" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
 custom_minimum_size = Vector2(100, 30)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -899,30 +1209,36 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "9. Utility"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Modules" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
+[node name="ModuleListContainer" type="ScrollContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("15_u1h01")
+
+[node name="ModuleList" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer"]
+layout_mode = 2
+theme = ExtResource("15_u1h01")
 theme_override_constants/separation = 16
-alignment = 1
 
-[node name="Module_1" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
+[node name="Module_1" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList"]
 custom_minimum_size = Vector2(100, 80)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("15_u1h01")
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_1"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList/Module_1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 texture = ExtResource("10_b1fbl")
 region_rect = Rect2(0, 0, 24, 24)
 patch_margin_left = 8
@@ -930,243 +1246,43 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_1"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_2" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_2"]
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList/Module_1"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
+theme = ExtResource("15_u1h01")
+text = "module"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_2"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
+[node name="SelectedModuleData" type="Control" parent="Game Overlays/Edit Overlay"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -140.0
+offset_right = 220.0
+offset_bottom = 140.0
+grow_vertical = 2
+theme = ExtResource("15_u1h01")
 
-[node name="Module_3" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_3"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/SelectedModuleData"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 texture = ExtResource("10_b1fbl")
 region_rect = Rect2(0, 0, 24, 24)
 patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_3"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_4" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_4"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_4"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_5" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_5"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_5"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_6" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_6"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_6"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_7" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_7"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_7"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="Module_8" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_8"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Modules/Module_8"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
-
-[node name="CurrentCategory" type="Control" parent="Game Overlays/Edit Overlay"]
-custom_minimum_size = Vector2(100, 100)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 16.0
-offset_top = -96.0
-offset_right = 96.0
-offset_bottom = -16.0
-grow_vertical = 0
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/CurrentCategory"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/CurrentCategory"]
-visible = false
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
 
 [node name="ModeButtons" type="Control" parent="Game Overlays"]
 layout_mode = 1
@@ -1175,44 +1291,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/ModeButtons"]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -216.0
-offset_top = -80.0
-grow_horizontal = 0
-grow_vertical = 0
-theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
-theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/ModeButtons/MarginContainer"]
-layout_mode = 2
-alignment = 2
-
-[node name="Kobold" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("6_8khoj")
-stretch_mode = 0
-
-[node name="Ship" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("6_8khoj")
-stretch_mode = 0
-
-[node name="Edit" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-texture_normal = ExtResource("6_8khoj")
-stretch_mode = 0
+theme = ExtResource("15_u1h01")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/ModeButtons"]
 layout_mode = 1
@@ -1223,12 +1302,11 @@ offset_left = -40.0
 offset_bottom = 40.0
 grow_horizontal = 0
 theme_override_constants/margin_left = 8
-theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
-theme_override_constants/margin_bottom = 8
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/ModeButtons/MarginContainer2"]
 layout_mode = 2
+theme_override_constants/separation = -12
 
 [node name="Settings" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer2/VBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -1248,6 +1326,12 @@ layout_mode = 2
 texture_normal = ExtResource("7_4anxa")
 stretch_mode = 0
 
+[node name="Edit" type="TextureButton" parent="Game Overlays/ModeButtons/MarginContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+texture_normal = ExtResource("6_8khoj")
+stretch_mode = 0
+
 [node name="InventoryMenu" type="Control" parent="Game Overlays"]
 visible = false
 layout_mode = 1
@@ -1256,6 +1340,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 script = ExtResource("6_noabg")
 
 [node name="Screen to menu margin" type="MarginContainer" parent="Game Overlays/InventoryMenu"]
@@ -1314,7 +1399,6 @@ grow_vertical = 2
 
 [node name="PerksSectionTitle" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Perks Margin/NinePatchRect/Perks VBox"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1357,7 +1441,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1382,7 +1465,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1407,7 +1489,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1432,7 +1513,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1457,7 +1537,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1482,7 +1561,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1507,7 +1585,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1532,7 +1609,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Perks
 "
@@ -1576,7 +1652,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/CreditsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Credits:"
 horizontal_alignment = 1
@@ -1586,7 +1661,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1614,7 +1688,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier1/ScrapBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Scrap:"
 horizontal_alignment = 1
@@ -1624,7 +1697,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1656,7 +1728,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/MagneticsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Magnetics:"
 horizontal_alignment = 1
@@ -1666,7 +1737,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1694,7 +1764,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/ElectricalBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Electrical:"
 horizontal_alignment = 1
@@ -1704,7 +1773,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1732,7 +1800,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier2/BaroplasticsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Baroplastics:"
 horizontal_alignment = 1
@@ -1742,7 +1809,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1774,7 +1840,6 @@ grow_vertical = 2
 [node name="Title" type="Label" parent="Game Overlays/InventoryMenu/Screen to menu margin/InventoryMenuBackground/General HBox/MarginContainer/Resources/Tier3/BlastproofsBox/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "Blastproof:"
 horizontal_alignment = 1
@@ -1784,7 +1849,6 @@ vertical_alignment = 1
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "100
 "
@@ -1866,6 +1930,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("15_u1h01")
 script = ExtResource("20_ybac4")
 
 [node name="Screen to menu margin" type="MarginContainer" parent="Game Overlays/ControlPanelMenu"]
@@ -1910,7 +1975,6 @@ layout_mode = 2
 
 [node name="Powerplant" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Generators/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "PowerPlant"
 horizontal_alignment = 1
@@ -1936,7 +2000,6 @@ layout_mode = 2
 
 [node name="PoweredModules" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/PoweredModules/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "Powered Modules"
 horizontal_alignment = 1
@@ -1962,14 +2025,12 @@ layout_mode = 2
 
 [node name="Hardpoints" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "Hardpoints"
 horizontal_alignment = 1
 
 [node name="Weapons" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "Weapon"
 horizontal_alignment = 1
@@ -1984,7 +2045,6 @@ layout_mode = 2
 
 [node name="Utility" type="Label" parent="Game Overlays/ControlPanelMenu/Screen to menu margin/InventoryMenuBackground/General HBox/Hardpoints/VBoxContainer"]
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 16
 text = "Utility"
 horizontal_alignment = 1
@@ -2009,6 +2069,7 @@ offset_right = -84.0
 offset_bottom = 100.0
 grow_horizontal = 0
 mouse_filter = 1
+theme = ExtResource("15_u1h01")
 script = ExtResource("13_k0o72")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Debug"]
@@ -2022,7 +2083,6 @@ grow_vertical = 2
 [node name="DebugCoords" type="Label" parent="Debug/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "(0,0,0)"
 horizontal_alignment = 1
@@ -2030,7 +2090,8 @@ horizontal_alignment = 1
 [node name="DebugThrust" type="Label" parent="Debug/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_fonts/font = ExtResource("11_ohhv0")
 theme_override_font_sizes/font_size = 8
 text = "0,0,0,0"
 horizontal_alignment = 1
+
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_1_Cockpits" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [1]]

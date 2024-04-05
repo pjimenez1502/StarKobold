@@ -11,9 +11,10 @@ var occupied_tiles := [] ##id is comprised of id:"helm_01" and subId:"#1" to dif
 
 
 func _ready():
-	generate_occupied_list()
+	#generate_occupied_list()
+	pass
 
-func generate_occupied_list():
+func generate_occupied_list(): ## Generate ship from list
 	Resources_Manager.no_costs = true
 	for module in load_module_list:
 		var module_data = find_module_by_id(module["module_id"])
@@ -25,7 +26,7 @@ func generate_occupied_list():
 	Resources_Manager.no_costs = false
 	
 func find_module_by_id(id):
-	for module_data in module_placer.MODULES_DATA:
+	for module_data in ModulesDataManager.module_resources:
 		if module_data["id"] == id:
 			return module_data
 	return null

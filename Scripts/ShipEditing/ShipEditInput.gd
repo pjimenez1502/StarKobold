@@ -1,40 +1,11 @@
 extends Node
 
-var module_references = {
-		"COCKPIT": {
-			1: ["cockpit_small_01"],
-		},
-		"POWER":{
-			1: ["reactor_01"]
-		},
-		"THRUSTER":{
-			1: ["thruster_main_small_01"]
-		},
-		"CARGO":{
-			1: ["cargo_small_01"],
-			2: ["fuel_small_01"],
-		},
-		"HALLWAY":{
-			1: ["hallway_01", "hallway_01_corner", "hallway_01_X"]
-		},
-		"HABITATION":{
-			
-		},
-		"HARDPOINT":{
-			
-		},
-		"UTILITY":{
-			
-		}
-	}
-
 @onready var player_ship = $".."
 
 @onready var ship_builder = $"Ship Builder"
 @onready var module_placer = $"Module Placer"
 
 @onready var ship_grid_map = $"../NavigationRegion3D/ShipGridMap"
-
 
 var current_category := "COCKPIT"
 var current_selected_module
@@ -127,7 +98,7 @@ func check_number_keys(event):
 var selected_variant_index := 0
 var current_selected_index : Array
 func select_module(selected_index):
-	var category = module_references[selected_index[0]]
+	var category = ModulesDataManager.module_references[selected_index[0]]
 	if !category.has(selected_index[1]):
 		return
 	var variants = category[selected_index[1]]
@@ -145,7 +116,6 @@ func select_module(selected_index):
 	current_selected_module = id
 
 ## END MANAGE CATEGORY AND MODULE SELECTION
-
 
 
 
