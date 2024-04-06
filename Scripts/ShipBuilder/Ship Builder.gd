@@ -1,5 +1,6 @@
 extends Node
 
+var gridmap_tile_size = 2
 @onready var ship_grid_map = $"../../NavigationRegion3D/ShipGridMap"
 @onready var module_placer = $"../Module Placer"
 @onready var ship_navigation_region = $"../../NavigationRegion3D"
@@ -66,11 +67,11 @@ func instantiate_module(module_id, position, rotation_index):
 	
 	var instance = module_data.object.instantiate()
 	ship_grid_map.add_child(instance)
-	var gridmap_tile_size = 2
+	
 	instance.position = position * gridmap_tile_size
 	instance.rotation = Vector3(0, deg_to_rad(90*rotation_index), 0)
 	
-	var module_instance_id = fill_occupied_tiles_from_module(module_data, position, instance, rotation_index)
+	var module_instance_id = fill_occupied_tiles_from_module(module_data, position * gridmap_tile_size, instance, rotation_index)
 	
 	implement_module_behaviour(instance, position, rotation_index, module_instance_id, module_data)
 	
@@ -105,7 +106,7 @@ func implement_module_behaviour(module_instance, position, rotation_index, modul
 ## REMOVE MODULE
 func remove_module(position):
 	var instance_to_remove
-	var tile_to_remove = fetch_tile_by_pos(position)
+	var tile_to_remove = fetch_tile_by_pos(position * gridmap_tile_size)
 	if !tile_to_remove:
 		return
 	instance_to_remove = tile_to_remove["instance"]

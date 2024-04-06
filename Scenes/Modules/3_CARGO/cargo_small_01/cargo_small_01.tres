@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://c6mts1o0m5jp8"]
 
-[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_2soyx"]
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_2soyx"]
 [ext_resource type="PackedScene" uid="uid://s3d3oa7psjac" path="res://Scenes/Modules/3_CARGO/cargo_small_01/cargo_small_01.tscn" id="1_8o6fb"]
 
 [resource]

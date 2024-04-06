@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://ct6xk42t76h77"]
 
 [ext_resource type="PackedScene" uid="uid://5euhd5fsheqp" path="res://Scenes/Modules/2_THRUSTER/thruster_main_small_01/thruster_main_small_01.tscn" id="1_233hv"]
-[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_nsid4"]
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_nsid4"]
 
 [resource]
 script = ExtResource("1_nsid4")

@@ -13,6 +13,9 @@ var hovered_tile : Vector3i
 var module_selected_rotation : float = 0
 var current_module_fixed_rotation : bool
 
+func _ready():
+	ModulesDataManager.module_placer = self
+
 func model_green():
 	preview_mesh.get_active_material(0).set("shader_parameter/instance_color_01", Color("00ff0099"))
 

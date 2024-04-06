@@ -1,0 +1,72 @@
+[gd_scene load_steps=4 format=3 uid="uid://byogd3wpb3j7q"]
+
+[ext_resource type="Theme" uid="uid://sm747wse7omy" path="res://Scenes/Theme.tres" id="1_b8k8t"]
+[ext_resource type="Script" path="res://Scenes/UI/editmode_module_selector.gd" id="2_bjbo0"]
+[ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="2_erjwb"]
+
+[node name="Module_1" type="Button"]
+custom_minimum_size = Vector2(100, 80)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("1_b8k8t")
+script = ExtResource("2_bjbo0")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_b8k8t")
+texture = ExtResource("2_erjwb")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="HBoxContainer" type="HBoxContainer" parent="NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModulePortrait" type="TextureRect" parent="NinePatchRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="ModuleNameLabel" type="Label" parent="NinePatchRect/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("1_b8k8t")
+theme_override_font_sizes/font_size = 12
+text = "module"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="Costs" type="VBoxContainer" parent="NinePatchRect/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="NinePatchRect/HBoxContainer/Costs"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "cost"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

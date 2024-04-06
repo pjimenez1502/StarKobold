@@ -5,12 +5,12 @@
 [ext_resource type="Script" path="res://Scripts/Input/CameraPivot.gd" id="3_xj0at"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShipMovement.gd" id="4_hyrg4"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipInput.gd" id="5_2ag44"]
-[ext_resource type="Script" path="res://Scripts/ShipBuilder/Ship Stats.gd" id="5_x6tnq"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Stats.gd" id="5_j4sur"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="6_dwxkm"]
 [ext_resource type="Script" path="res://addons/starlight/StarGenerator.gd" id="7_7b8ov"]
-[ext_resource type="Script" path="res://Scripts/ShipBuilder/ShipEditInput.gd" id="7_x7fkd"]
-[ext_resource type="Script" path="res://Scripts/ShipBuilder/Ship Builder.gd" id="8_u42rw"]
-[ext_resource type="Script" path="res://Scripts/ShipBuilder/Module Placer.gd" id="9_qr1y8"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/ShipEditInput.gd" id="7_imdma"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Ship Builder.gd" id="7_uhsho"]
+[ext_resource type="Script" path="res://Scripts/ShipEditing/Module Placer.gd" id="8_dl5mh"]
 
 [sub_resource type="Environment" id="Environment_b1fdb"]
 background_mode = 1
@@ -77,19 +77,19 @@ angular_damp = 5.0
 script = ExtResource("4_hyrg4")
 
 [node name="Ship Stats" type="Node" parent="PlayerShip"]
-script = ExtResource("5_x6tnq")
+script = ExtResource("5_j4sur")
 
 [node name="Ship Control Input" type="Node" parent="PlayerShip"]
 script = ExtResource("5_2ag44")
 
 [node name="Ship Editing Input" type="Node" parent="PlayerShip"]
-script = ExtResource("7_x7fkd")
+script = ExtResource("7_imdma")
 
 [node name="Ship Builder" type="Node" parent="PlayerShip/Ship Editing Input"]
-script = ExtResource("8_u42rw")
+script = ExtResource("7_uhsho")
 
 [node name="Module Placer" type="Node" parent="PlayerShip/Ship Editing Input"]
-script = ExtResource("9_qr1y8")
+script = ExtResource("8_dl5mh")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="PlayerShip"]
 navigation_mesh = SubResource("NavigationMesh_8nobd")

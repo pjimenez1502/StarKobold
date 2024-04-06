@@ -2,12 +2,10 @@ extends Resource
 
 class_name Module_Resource
 
-enum ModuleCategories { COCKPIT, POWER, THRUSTER, CARGO, HALLWAY, HABITATION, HARDPOINT, UTILITY}
-
 @export var id : String
 @export var name : String
 @export var desc : String
-@export var category : ModuleCategories
+@export var category : ModulesDataManager.categories
 @export var object : PackedScene
 @export var tiles := [[0,0]]
 @export var costs = {

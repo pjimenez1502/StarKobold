@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://cyl8o5w0brvs1"]
 
 [ext_resource type="PackedScene" uid="uid://b6uqjv257ct64" path="res://Scenes/Modules/4_HALLWAY/hallway_01_corner/hallway_01_corner.tscn" id="1_2c0rh"]
-[ext_resource type="Script" path="res://Scripts/ShipEditing/Modules Data.gd" id="1_5fmic"]
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_5fmic"]
 
 [resource]
 script = ExtResource("1_5fmic")

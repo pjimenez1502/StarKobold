@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=23 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
@@ -12,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://ba4hrscp74dxy" path="res://Assets/UI/Buttons/navigation.png" id="7_8j0le"]
 [ext_resource type="Texture2D" uid="uid://bggbeuuut1gip" path="res://Assets/UI/Buttons/settings.png" id="8_00xeb"]
 [ext_resource type="Texture2D" uid="uid://byfnyautk0vvx" path="res://Assets/UI/Icons/ship.png" id="8_5obta"]
-[ext_resource type="Texture2D" uid="uid://bf0v1q41kdp36" path="res://Assets/UI/Icons/edit.png" id="8_tivam"]
 [ext_resource type="Texture2D" uid="uid://b56oirf1878ir" path="res://Assets/UI/Backgrounds/menu_background.png" id="9_rwlss"]
 [ext_resource type="Script" path="res://Scripts/UI/Overlays/EditUI.gd" id="9_we0va"]
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="10_b1fbl"]
@@ -62,6 +61,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("15_u1h01")
 
 [node name="Kobold Overlay" type="Control" parent="Game Overlays"]
@@ -72,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("15_u1h01")
 script = ExtResource("4_ekkll")
 
@@ -117,6 +118,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("15_u1h01")
 script = ExtResource("7_4ekkn")
 
@@ -161,16 +163,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 theme = ExtResource("15_u1h01")
 script = ExtResource("9_we0va")
 
 [node name="Portrait" type="Control" parent="Game Overlays/Edit Overlay"]
-custom_minimum_size = Vector2(80, 80)
 anchors_preset = 0
 offset_left = 16.0
 offset_top = 16.0
-offset_right = 96.0
-offset_bottom = 96.0
+offset_right = 196.0
+offset_bottom = 56.0
 theme = ExtResource("15_u1h01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/Portrait"]
@@ -179,11 +181,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -40.0
-offset_bottom = -40.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(2, 2)
 texture = ExtResource("10_b1fbl")
 region_rect = Rect2(0, 0, 24, 24)
 patch_margin_left = 8
@@ -191,12 +190,20 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/Portrait"]
-custom_minimum_size = Vector2(80, 80)
-layout_mode = 0
-offset_right = 80.0
-offset_bottom = 80.0
-texture = ExtResource("8_tivam")
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/Portrait"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -8.0
+offset_right = 64.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Shipyard"
 
 [node name="Resources" type="Control" parent="Game Overlays/Edit Overlay"]
 layout_mode = 1
@@ -208,6 +215,7 @@ offset_bottom = 386.0
 theme = ExtResource("15_u1h01")
 
 [node name="Vertical" type="VBoxContainer" parent="Game Overlays/Edit Overlay/Resources"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -855,24 +863,23 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -154.0
-offset_top = 53.0
-offset_right = 154.0
-offset_bottom = 93.0
+offset_left = -570.0
+offset_top = 64.0
+offset_right = -262.0
+offset_bottom = 104.0
 grow_horizontal = 2
 theme = ExtResource("15_u1h01")
 
-[node name="VBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -132.0
-offset_top = -20.0
-offset_right = 132.0
-offset_bottom = 20.0
+anchors_preset = -1
+anchor_left = 0.032
+anchor_top = 0.15
+anchor_right = 0.032
+anchor_bottom = 0.15
+offset_left = 0.143999
+offset_right = 160.144
+offset_bottom = 84.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -929,40 +936,66 @@ text = "nan"
 horizontal_alignment = 1
 
 [node name="ModuleSelector" type="Control" parent="Game Overlays/Edit Overlay"]
-custom_minimum_size = Vector2(740, 60)
 layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -370.0
-offset_top = -140.0
-offset_right = 370.0
-offset_bottom = -16.0
-grow_horizontal = 2
-grow_vertical = 0
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -317.0
+offset_top = -244.0
+offset_right = -17.0
+offset_bottom = 244.0
+grow_horizontal = 0
+grow_vertical = 2
 theme = ExtResource("15_u1h01")
 script = ExtResource("14_eywte")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector"]
-layout_mode = 0
-offset_left = -75.0
-offset_right = 837.0
-offset_bottom = 114.0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
 theme = ExtResource("15_u1h01")
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 2
+texture = ExtResource("10_b1fbl")
+region_rect = Rect2(0, 0, 24, 24)
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+
+[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "CATEGORY"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Categories" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
 layout_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 1
 theme = ExtResource("15_u1h01")
 alignment = 1
 
 [node name="Category_1_Cockpits" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("15_u1h01")
+toggle_mode = true
+text = "1"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_1_Cockpits"]
 layout_mode = 1
@@ -978,23 +1011,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_1_Cockpits"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "1. Cockpits"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_2_Power" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "2"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_2_Power"]
 layout_mode = 1
@@ -1010,23 +1033,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_2_Power"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "2. Power"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_3_Thrust" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "3"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_3_Thrust"]
 layout_mode = 1
@@ -1042,23 +1055,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_3_Thrust"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "3. Thrust"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_4_Cargo" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "4"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_4_Cargo"]
 layout_mode = 1
@@ -1074,23 +1077,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_4_Cargo"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "4. Cargo"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_5_Hallway" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "5"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_5_Hallway"]
 layout_mode = 1
@@ -1106,23 +1099,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_5_Hallway"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "5. Hallway"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_6_Habitation" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "6"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_6_Habitation"]
 layout_mode = 1
@@ -1138,23 +1121,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_6_Habitation"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "7. Habitation"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_7_Hardpoint" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "7"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_7_Hardpoint"]
 layout_mode = 1
@@ -1170,23 +1143,13 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_7_Hardpoint"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "8. Hardpoint"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="Category_8_Utility" type="Button" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories"]
-custom_minimum_size = Vector2(100, 30)
+custom_minimum_size = Vector2(32, 32)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+toggle_mode = true
+text = "8"
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_8_Utility"]
 layout_mode = 1
@@ -1202,61 +1165,18 @@ patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
 
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_8_Utility"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 8
-text = "9. Utility"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="ModuleListContainer" type="ScrollContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+mouse_filter = 0
 theme = ExtResource("15_u1h01")
 
-[node name="ModuleList" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer"]
+[node name="ModuleList" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 0
 theme = ExtResource("15_u1h01")
-theme_override_constants/separation = 16
-
-[node name="Module_1" type="Control" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList"]
-custom_minimum_size = Vector2(100, 80)
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("15_u1h01")
-
-[node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList/Module_1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("15_u1h01")
-texture = ExtResource("10_b1fbl")
-region_rect = Rect2(0, 0, 24, 24)
-patch_margin_left = 8
-patch_margin_top = 8
-patch_margin_right = 8
-patch_margin_bottom = 8
-
-[node name="Label" type="Label" parent="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/ModuleListContainer/ModuleList/Module_1"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("15_u1h01")
-text = "module"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="SelectedModuleData" type="Control" parent="Game Overlays/Edit Overlay"]
 layout_mode = 1
@@ -1271,9 +1191,12 @@ theme = ExtResource("15_u1h01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/SelectedModuleData"]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.073
+anchor_right = 1.073
 anchor_bottom = 1.0
+offset_left = -0.0600014
+offset_right = -0.0600128
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_u1h01")
@@ -1285,12 +1208,12 @@ patch_margin_right = 8
 patch_margin_bottom = 8
 
 [node name="ModeButtons" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
-anchors_preset = 15
+anchors_preset = 1
+anchor_left = 1.0
 anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_horizontal = 0
 theme = ExtResource("15_u1h01")
 
 [node name="MarginContainer2" type="MarginContainer" parent="Game Overlays/ModeButtons"]
@@ -1298,8 +1221,8 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 40.0
+offset_left = -80.0
+offset_bottom = 220.0
 grow_horizontal = 0
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_right = 8
@@ -2095,3 +2018,10 @@ text = "0,0,0,0"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_1_Cockpits" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [1]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_2_Power" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [2.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_3_Thrust" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [3.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_4_Cargo" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [4.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_5_Hallway" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [5.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_6_Habitation" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [6.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_7_Hardpoint" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [7.0]]
+[connection signal="pressed" from="Game Overlays/Edit Overlay/ModuleSelector/VBoxContainer/Categories/Category_8_Utility" to="Game Overlays/Edit Overlay/ModuleSelector" method="_on_category_button_pressed" binds= [8.0]]
