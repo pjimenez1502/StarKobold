@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://drxsiriix73i"]
+
+[ext_resource type="PackedScene" uid="uid://bhc3rnstc70us" path="res://Scenes/Modules/3_CARGO/cargo_large_01/cargo_large_01.glb" id="1_tiiqu"]
+
+[node name="CargoLarge01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_tiiqu")]

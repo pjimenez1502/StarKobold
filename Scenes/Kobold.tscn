@@ -6,8 +6,8 @@
 [ext_resource type="Script" path="res://Scripts/Input/KoboldInput.gd" id="4_8j4uy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x5sg"]
-radius = 0.4
-height = 1.2
+radius = 0.2
+height = 0.6
 
 [sub_resource type="Animation" id="Animation_x6p6g"]
 resource_name = "Damaged"
@@ -55,11 +55,11 @@ collision_mask = 5
 script = ExtResource("1_lys7n")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32, 0)
 shape = SubResource("CapsuleShape3D_3x5sg")
 
 [node name="Body" type="Sprite3D" parent="."]
-transform = Transform3D(2.29734, 0.060158, 1.92836, -0.0785307, 2.99897, 0, -1.9277, -0.0504786, 2.29813, 0, 0.458464, 0)
+transform = Transform3D(1.53156, 0.0401054, 1.28558, -0.0523539, 1.99931, -1.22174e-08, -1.28514, -0.0336525, 1.53209, 0, 0.32, 0)
 billboard = 2
 texture_filter = 0
 texture = ExtResource("2_n804x")

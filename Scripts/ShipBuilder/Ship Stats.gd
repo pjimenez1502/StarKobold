@@ -1,5 +1,7 @@
 extends Node
 
+@onready var player_ship = $".."
+
 var generator_modules := []
 var powered_modules := []
 ##   power module example:  {"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true}
@@ -102,6 +104,7 @@ func calculate_power():
 func update_mass(value):
 	mass += value
 	update_show_stats()
+	player_ship.mass = mass
 
 func update_show_stats():
 	Resources_Manager.SHIP_STAT_UPDATE.emit({"mass": mass, "available_power": available_power, "drained_power": drained_power})

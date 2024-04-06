@@ -1,8 +1,8 @@
 extends Node
 
 @onready var player_ship = $".."
-@onready var ship_camera = $"../../ShipCameraPivot/ShipCamera"
-@onready var player_camera = $"../../PlayerCameraPivot/PlayerCamera"
+@onready var ship_camera = $"../../ShipCameraPivot/Camera"
+@onready var player_camera = $"../../PlayerCameraPivot/Camera"
 
 
 func _physics_process(delta):

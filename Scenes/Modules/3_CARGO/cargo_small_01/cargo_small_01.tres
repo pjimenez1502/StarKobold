@@ -7,7 +7,7 @@
 script = ExtResource("1_2soyx")
 id = "cargo_small_01"
 name = "Small Cargo Container"
-desc = "A small Cargo Container. Can only be accessed from the outside."
+desc = "A small Cargo Container. Can only carry one cargo unit."
 category = 3
 object = ExtResource("1_8o6fb")
 tiles = [[0, 0]]

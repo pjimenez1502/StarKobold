@@ -28,7 +28,19 @@
       "resource_local_to_scene": true,
       "resource_name": true
     },
+    "res://Scenes/Modules/3_CARGO/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
     "res://Scenes/Modules/4_HALLWAY/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/5_FACILITY/": {
+      "resource_local_to_scene": true,
+      "resource_name": true
+    },
+    "res://Scenes/Modules/5_HABITATION/": {
       "resource_local_to_scene": true,
       "resource_name": true
     },
@@ -63,11 +75,11 @@
     "res://Scenes/Modules/2_THRUSTER/",
     "res://Scenes/Modules/3_CARGO/",
     "res://Scenes/Modules/4_HALLWAY/",
-    "res://Scenes/Modules/5_HABITATION/",
     "res://Scenes/Modules/6_HARDPOINT/",
     "res://Scenes/Modules/7_UTILITY/",
     "res://Scenes/Modules/0_COCKPIT/",
-    "res://Data/"
+    "res://Data/",
+    "res://Scenes/Modules/5_FACILITY/"
   ],
   "table_functions": {
     "filter": [

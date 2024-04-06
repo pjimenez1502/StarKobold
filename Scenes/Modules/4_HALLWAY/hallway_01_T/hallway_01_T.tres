@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://bo5ne38m078so"]
+
+[ext_resource type="PackedScene" uid="uid://dfc6i1jwpub77" path="res://Scenes/Modules/4_HALLWAY/hallway_01_T/hallway_01_T.tscn" id="1_7mocr"]
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_ucegs"]
+
+[resource]
+script = ExtResource("1_ucegs")
+id = "hallway_01_T"
+name = "Hallway T"
+desc = "Hallway with three exits."
+category = 4
+object = ExtResource("1_7mocr")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 0,
+"scrap": 40,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 20,
+"power": 0
+}
+fixed_rotation = false

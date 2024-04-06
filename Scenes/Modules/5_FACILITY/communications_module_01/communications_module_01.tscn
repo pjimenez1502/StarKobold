@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://3llnkrsuh5nx"]
+
+[ext_resource type="PackedScene" uid="uid://d30482iq1mn4v" path="res://Scenes/Modules/5_FACILITY/communications_module_01/communications_module_01.glb" id="1_h5qpv"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="2_rxpn7"]
+
+[node name="CommunicationsModule01" type="Node3D"]
+
+[node name="mesh" parent="." instance=ExtResource("1_h5qpv")]
+
+[node name="power_behaviour" type="Node" parent="."]
+script = ExtResource("2_rxpn7")

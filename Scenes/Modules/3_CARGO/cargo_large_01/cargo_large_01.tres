@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://dtrjhiyqi5b32"]
+
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_x27w2"]
+[ext_resource type="PackedScene" uid="uid://drxsiriix73i" path="res://Scenes/Modules/3_CARGO/cargo_large_01/cargo_large_01.tscn" id="1_yw70b"]
+
+[resource]
+script = ExtResource("1_x27w2")
+id = "cargo_large_01"
+name = "Large Cargo Container"
+desc = "Can carry two cargo units."
+category = 3
+object = ExtResource("1_yw70b")
+tiles = [[0, 0], [0, 1]]
+costs = {
+"baroplastic_segments": 2,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 0,
+"magnetic_elements": 1,
+"scrap": 140,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 180,
+"power": 0
+}
+fixed_rotation = false

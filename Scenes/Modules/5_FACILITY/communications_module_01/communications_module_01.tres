@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://dl0y07qo5685x"]
+
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_2kokh"]
+[ext_resource type="PackedScene" uid="uid://3llnkrsuh5nx" path="res://Scenes/Modules/5_FACILITY/communications_module_01/communications_module_01.tscn" id="1_vmth4"]
+
+[resource]
+script = ExtResource("1_2kokh")
+id = "communications_module_01"
+name = "Communications Module"
+desc = ""
+category = 5
+object = ExtResource("1_vmth4")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 0,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 4,
+"magnetic_elements": 1,
+"scrap": 80,
+"semiconductive_fibers": 0
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 80,
+"power": 20
+}
+fixed_rotation = false
