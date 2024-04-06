@@ -12,6 +12,7 @@ extends Control
 	"8": $VBoxContainer/Categories/Category_8_Utility,
 }
 @onready var module_list = $VBoxContainer/ModuleListContainer/ModuleList
+@onready var category_label = %CategoryLabel
 const EDITMODE_MODULE_SELECTOR = preload("res://Scenes/UI/editmode_module_selector.tscn")
 
 
@@ -36,6 +37,8 @@ func load_category(category):
 		module_button_instance.ModulePressed.connect(select_module)
 		module_list.add_child(module_button_instance)
 		module_button_instance.set_data(module_data)
+		
+	category_label.text = category_name
 
 func select_module(module_id):
 	ModulesDataManager.select_module(module_id)
@@ -47,7 +50,7 @@ func clear_module_list():
 
 func _on_category_button_pressed(category_id):
 	highligh_active_category_button(category_id)
-	pass # Replace with function body.
+	ModulesDataManager.select_category(category_id)
 
 
 

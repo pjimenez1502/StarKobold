@@ -1,9 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://o4gfinoagwhn"]
+[gd_scene load_steps=15 format=3 uid="uid://o4gfinoagwhn"]
 
 [ext_resource type="MeshLibrary" uid="uid://ssv78malycqc" path="res://Scenes/Tilesets/meshlibrary.tres" id="1_2lwcm"]
 [ext_resource type="PackedScene" uid="uid://bftsexb11rsxo" path="res://Scenes/Kobold.tscn" id="2_vobhq"]
 [ext_resource type="Script" path="res://Scripts/Input/CameraPivot.gd" id="3_xj0at"]
 [ext_resource type="Script" path="res://Scripts/Player/PlayerShipMovement.gd" id="4_hyrg4"]
+[ext_resource type="Script" path="res://Scripts/Input/CameraShipAlignment.gd" id="4_l5op6"]
 [ext_resource type="Script" path="res://Scripts/Input/ShipInput.gd" id="5_2ag44"]
 [ext_resource type="Script" path="res://Scripts/ShipBuilder/Ship Stats.gd" id="5_x6tnq"]
 [ext_resource type="PackedScene" uid="uid://b0nt4n13a6448" path="res://addons/starlight/Stars.tscn" id="6_dwxkm"]
@@ -45,29 +46,34 @@ transform = Transform3D(0.780211, 0.498063, 0.378423, -0.548293, 0.253355, 0.796
 transform = Transform3D(-0.474555, -0.878967, -0.0470589, -0.861751, 0.453034, 0.228355, -0.179397, 0.14892, -0.97244, 2.83285, 6.1425, 5.90218)
 light_energy = 0.1
 
-[node name="PlayerCameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="PlayerCameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("player", "ship")]
 transform = Transform3D(0.766044, -0.509274, 0.392194, 0, 0.610145, 0.79229, -0.642788, -0.606929, 0.467398, 0.171193, 0, 0)
 script = ExtResource("3_xj0at")
 player = NodePath("../PlayerShip/Kobold")
+ship = NodePath("../PlayerShip")
 zoom_range = Vector2(2, 20)
 follow_speed = 2.0
 
-[node name="PlayerCamera" type="Camera3D" parent="PlayerCameraPivot"]
+[node name="Camera" type="Camera3D" parent="PlayerCameraPivot"]
 transform = Transform3D(1, -8.9407e-08, 0, 0, 1, -8.9407e-08, 0, 0, 1, 0, 0.1, 3)
 current = true
 fov = 70.0
 
-[node name="ShipCameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+[node name="ShipCameraPivot" type="Node3D" parent="." node_paths=PackedStringArray("player", "ship")]
 transform = Transform3D(1, 0, 0, 0, 0.173648, 0.984808, 0, -0.984808, 0.173648, 0.171193, 0, 0)
 script = ExtResource("3_xj0at")
-player = NodePath("../PlayerShip")
+player = NodePath("../PlayerShip/Kobold")
+ship = NodePath("../PlayerShip")
 zoom_range = Vector2(20, 60)
-follow_speed = 4.0
+follow_speed = 2.0
 camera_focus = 1
 
-[node name="ShipCamera" type="Camera3D" parent="ShipCameraPivot"]
+[node name="Camera" type="Camera3D" parent="ShipCameraPivot"]
 transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0, 0.1, 20)
 fov = 70.0
+
+[node name="ShipAlignment" type="Node" parent="ShipCameraPivot"]
+script = ExtResource("4_l5op6")
 
 [node name="PlayerShip" type="RigidBody3D" parent="."]
 mass = 100.0
