@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="Module_Resource" load_steps=3 format=3 uid="uid://bixbnhmo7ib7"]
+
+[ext_resource type="PackedScene" uid="uid://be5k452ckjnta" path="res://Scenes/Modules/7_UTILITY/FTL_small_01/FTL_small_01.tscn" id="1_b51or"]
+[ext_resource type="Script" path="res://Scripts/ShipBuilder/Modules Data.gd" id="1_dxvdu"]
+
+[resource]
+script = ExtResource("1_dxvdu")
+id = "ftl_small_01"
+name = "CAT 1 Jump Drive"
+desc = "Lowest class Jump Drive. Ratio: X Ton/Km"
+category = 7
+object = ExtResource("1_b51or")
+tiles = [[0, 0]]
+costs = {
+"baroplastic_segments": 1,
+"blastproof_modules": 0,
+"credits": 0,
+"electrical_components": 2,
+"magnetic_elements": 8,
+"scrap": 20,
+"semiconductive_fibers": 4
+}
+stats = {
+"fuelcapacity": 0,
+"fuelconsumption": 0,
+"integrity": 1000,
+"mass": 100,
+"power": 200
+}
+fixed_rotation = false

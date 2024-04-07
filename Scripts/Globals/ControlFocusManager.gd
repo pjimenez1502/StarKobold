@@ -55,3 +55,12 @@ func switch_control_focus(new_focus : CONTROL_FOCUS):
 
 func return_to_prev_focus():
 	switch_control_focus(prev_control_focus)
+
+
+func switch_player_ship_control():
+	if current_control_focus == CONTROL_FOCUS.KOBOLD:
+		switch_control_focus(CONTROL_FOCUS.SHIP)
+		return
+	if current_control_focus == CONTROL_FOCUS.SHIP:
+		switch_control_focus(CONTROL_FOCUS.KOBOLD)
+		return

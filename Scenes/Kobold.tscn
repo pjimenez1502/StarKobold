@@ -1,9 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://bftsexb11rsxo"]
+[gd_scene load_steps=13 format=3 uid="uid://bftsexb11rsxo"]
 
 [ext_resource type="Script" path="res://Scripts/Player/CharacterMovement.gd" id="1_lys7n"]
 [ext_resource type="Texture2D" uid="uid://6k8q2dj3idu4" path="res://Assets/Characters/suited_kobold.png" id="2_n804x"]
 [ext_resource type="Script" path="res://Scripts/CharacterNavigation.gd" id="2_up1qu"]
 [ext_resource type="Script" path="res://Scripts/Input/KoboldInput.gd" id="4_8j4uy"]
+[ext_resource type="Texture2D" uid="uid://b5faybs1u2sq3" path="res://Assets/UI/Interact/F_Key.png" id="5_oisth"]
+[ext_resource type="Script" path="res://Scripts/Player/PlayerInteractuableArea.gd" id="5_spo01"]
+[ext_resource type="Script" path="res://Scripts/UI/UI_Bob.gd" id="6_mcor7"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3x5sg"]
 radius = 0.2
@@ -49,6 +52,9 @@ _data = {
 "Walk": SubResource("Animation_o7oru")
 }
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_uhvi1"]
+radius = 1.0
+
 [node name="Kobold" type="CharacterBody3D"]
 collision_layer = 5
 collision_mask = 5
@@ -85,4 +91,24 @@ autostart = true
 script = ExtResource("4_8j4uy")
 nav_agent = NodePath("../Nav/NavigationAgent3D")
 
+[node name="Player Interact Detector" type="Area3D" parent="."]
+collision_layer = 32
+collision_mask = 32
+script = ExtResource("5_spo01")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player Interact Detector"]
+shape = SubResource("SphereShape3D_uhvi1")
+
+[node name="Interact_Key Sprite" type="Sprite3D" parent="Player Interact Detector"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+pixel_size = 0.005
+billboard = 1
+fixed_size = true
+texture_filter = 0
+texture = ExtResource("5_oisth")
+script = ExtResource("6_mcor7")
+bob = true
+
 [connection signal="timeout" from="Nav/PathfindTimer" to="." method="_on_pathfind_timeout"]
+[connection signal="area_entered" from="Player Interact Detector" to="Player Interact Detector" method="interactuable_entered"]
+[connection signal="area_exited" from="Player Interact Detector" to="Player Interact Detector" method="interactuable_exited"]

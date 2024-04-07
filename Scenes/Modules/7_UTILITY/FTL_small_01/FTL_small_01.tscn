@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://be5k452ckjnta"]
+
+[ext_resource type="PackedScene" uid="uid://v7qnylgarxcj" path="res://Scenes/Modules/7_UTILITY/FTL_small_01/FTL_small_01.glb" id="1_5ihsu"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/module_properties.gd" id="1_np8rg"]
+[ext_resource type="Script" path="res://Scripts/ModuleBehaviour/PowerBehaviour.gd" id="2_6fjdn"]
+
+[node name="FtlSmall01" type="Node3D" node_paths=PackedStringArray("behaviours")]
+script = ExtResource("1_np8rg")
+behaviours = [NodePath("mesh/power_behaviour")]
+
+[node name="mesh" parent="." instance=ExtResource("1_5ihsu")]
+
+[node name="power_behaviour" type="Node" parent="mesh"]
+script = ExtResource("2_6fjdn")

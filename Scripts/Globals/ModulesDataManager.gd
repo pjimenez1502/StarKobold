@@ -23,6 +23,9 @@ var module_resources = [
 	load("res://Scenes/Modules/5_FACILITY/communications_module_01/communications_module_01.tres"),
 	## DEFENSE
 	#load(),
+	## UTILITY
+	load("res://Scenes/Modules/7_UTILITY/FTL_small_01/FTL_small_01.tres"),
+	#load(),
 ]
 enum categories {
 	COCKPIT, POWER, THRUST, CARGO, HALLWAY, FACILITY, DEFENSE, UTILITY
@@ -54,7 +57,7 @@ var module_references = {
 			
 		],
 		"UTILITY": [
-			
+			"ftl_small_01"
 		]
 	}
 
