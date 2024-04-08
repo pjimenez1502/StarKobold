@@ -15,9 +15,9 @@ costs = {
 "baroplastic_segments": 0,
 "blastproof_modules": 0,
 "credits": 0,
-"electrical_components": 0,
-"magnetic_elements": 0,
-"scrap": 0,
+"electrical_components": 2,
+"magnetic_elements": 1,
+"scrap": 60,
 "semiconductive_fibers": 0
 }
 stats = {

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://be8ulv2ooh3ob"]
+[gd_scene load_steps=24 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
 [ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://cwdr88i0dk35l" path="res://Assets/UI/Backgrounds/element_border.png" id="10_b1fbl"]
 [ext_resource type="Texture2D" uid="uid://ds02clpjj473a" path="res://Assets/UI/Icons/weight.png" id="11_rb680"]
 [ext_resource type="Texture2D" uid="uid://b2ixxgoya6ad" path="res://Assets/UI/Icons/power.png" id="12_wcnhe"]
+[ext_resource type="Texture2D" uid="uid://btia5kowekwdc" path="res://Assets/UI/Icons/fuel.png" id="13_em75d"]
 [ext_resource type="Script" path="res://Scripts/UI/DebugUI.gd" id="13_k0o72"]
 [ext_resource type="Script" path="res://Scenes/ModuleSelectorUI.gd" id="14_eywte"]
 [ext_resource type="Theme" uid="uid://sm747wse7omy" path="res://Scenes/Theme.tres" id="15_u1h01"]
@@ -157,7 +158,6 @@ offset_bottom = 80.0
 texture = ExtResource("8_5obta")
 
 [node name="Edit Overlay" type="Control" parent="Game Overlays"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -864,46 +864,37 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -570.0
-offset_top = 64.0
-offset_right = -262.0
-offset_bottom = 104.0
+offset_left = -544.0
+offset_top = 80.0
+offset_right = -324.0
+offset_bottom = 230.0
 grow_horizontal = 2
 theme = ExtResource("15_u1h01")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.032
-anchor_top = 0.15
-anchor_right = 0.032
-anchor_bottom = 0.15
-offset_left = 0.143999
-offset_right = 160.144
-offset_bottom = 84.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="Weight" type="Control" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer"]
-custom_minimum_size = Vector2(160, 40)
-layout_mode = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Weight"]
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/ShipStats"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_right = 16
 
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Weight/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer"]
+layout_mode = 2
+
+[node name="Weight" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Weight"]
+modulate = Color(0.6, 0.6, 0.6, 1)
 custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("11_rb680")
 expand_mode = 2
 
-[node name="ShipMassLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Weight/HBoxContainer"]
+[node name="ShipMassLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Weight"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -911,24 +902,35 @@ theme_override_font_sizes/font_size = 16
 text = "nan"
 horizontal_alignment = 1
 
-[node name="Power" type="Control" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer"]
-custom_minimum_size = Vector2(160, 40)
+[node name="Power" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Power"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Power/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Power"]
+modulate = Color(0.8, 0.8, 0, 1)
+custom_minimum_size = Vector2(40, 40)
 layout_mode = 2
 texture = ExtResource("12_wcnhe")
 expand_mode = 2
 
-[node name="ShipPowerLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/VBoxContainer/Power/HBoxContainer"]
+[node name="ShipPowerLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Power"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 16
+text = "nan"
+horizontal_alignment = 1
+
+[node name="Fuel" type="HBoxContainer" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Fuel"]
+modulate = Color(0.682353, 0, 0, 1)
+custom_minimum_size = Vector2(40, 40)
+layout_mode = 2
+texture = ExtResource("13_em75d")
+expand_mode = 2
+
+[node name="ShipFuelLabel" type="Label" parent="Game Overlays/Edit Overlay/ShipStats/MarginContainer/VBoxContainer/Fuel"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1185,20 +1187,18 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_top = -140.0
-offset_right = 220.0
-offset_bottom = 140.0
+offset_left = 16.0
+offset_top = -108.0
+offset_right = 254.0
+offset_bottom = 172.0
 grow_vertical = 2
 theme = ExtResource("15_u1h01")
 
 [node name="NinePatchRect" type="NinePatchRect" parent="Game Overlays/Edit Overlay/SelectedModuleData"]
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.073
-anchor_right = 1.073
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -0.0600014
-offset_right = -0.0600128
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("15_u1h01")
@@ -1208,6 +1208,82 @@ patch_margin_left = 8
 patch_margin_top = 8
 patch_margin_right = 8
 patch_margin_bottom = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="Module_Data" type="VBoxContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer"]
+layout_mode = 2
+
+[node name="moduledata_name" type="Label" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "MODULE NAME"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Cost_Separator" type="Label" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Cost:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="CostsContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="Module_Data Costlist" type="VBoxContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data/CostsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -8
+
+[node name="Desc_Separator" type="Label" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Desc:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="moduledata_desc" type="Label" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(220, 60)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+autowrap_mode = 3
+text_overrun_behavior = 3
+
+[node name="Stats_Separator2" type="Label" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Stats:"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="StatsContainer" type="MarginContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data"]
+layout_mode = 2
+theme_override_constants/margin_left = 64
+theme_override_constants/margin_right = 64
+
+[node name="Module_Data Statlist" type="VBoxContainer" parent="Game Overlays/Edit Overlay/SelectedModuleData/NinePatchRect/MarginContainer/Module_Data/StatsContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = -8
 
 [node name="ModeButtons" type="Control" parent="Game Overlays"]
 visible = false

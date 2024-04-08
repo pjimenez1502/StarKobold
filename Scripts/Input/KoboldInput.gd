@@ -8,7 +8,6 @@ func _input(event):
 		
 	if event.is_action_pressed("RightClick"):
 		right_click()
-	
 
 func _process(delta):
 	pass

@@ -11,6 +11,7 @@ var hardpoint_module := []
 ##   thrust module example: {"module": module_behaviour, "module_inst_id": module_instance_id, "enabled": true, "firing": false}
 
 var mass : int
+var fuel_capacity : int
 
 var available_power : int
 var drained_power : int
@@ -106,6 +107,10 @@ func update_mass(value):
 	update_show_stats()
 	player_ship.mass = mass
 
+func update_fuelcap(value):
+	fuel_capacity += value
+	update_show_stats()
+
 func update_show_stats():
-	Resources_Manager.SHIP_STAT_UPDATE.emit({"mass": mass, "available_power": available_power, "drained_power": drained_power})
+	Resources_Manager.SHIP_STAT_UPDATE.emit({"mass": mass, "available_power": available_power, "drained_power": drained_power, "fuel_capacity": fuel_capacity})
 

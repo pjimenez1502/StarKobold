@@ -25,6 +25,6 @@ stats = {
 "fuelconsumption": 0,
 "integrity": 1000,
 "mass": 80,
-"power": 20
+"power": -20
 }
 fixed_rotation = false

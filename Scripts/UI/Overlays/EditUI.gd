@@ -4,6 +4,7 @@ extends Control
 ## STATS
 @onready var ship_mass_label = %ShipMassLabel
 @onready var ship_power_label = %ShipPowerLabel
+@onready var ship_fuel_label = %ShipFuelLabel
 
 
 ## RESOURCES
@@ -21,7 +22,7 @@ func _ready():
 	Resources_Manager.update_resource_signal()
 	
 	Resources_Manager.SHIP_STAT_UPDATE.connect(update_ship_stats)
-	
+
 
 func update_resources(resources):
 	#print(resources)
@@ -38,6 +39,7 @@ func update_resources(resources):
 func update_ship_stats(stats):
 	ship_mass_label.text = str(stats["mass"], " T")
 	ship_power_label.text = str(stats["drained_power"], "/", stats["available_power"], " MWh")
+	ship_fuel_label.text = str(stats["fuel_capacity"])
 	
 func toggle_overlay_visible(value):
 	visible = value

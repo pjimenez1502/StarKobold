@@ -98,8 +98,10 @@ func implement_module_behaviour(module_instance, position, rotation_index, modul
 				if module_data.stats["power"] < 0:
 					ship_stats.add_powered_module({"module": module_behaviour, "module_inst_id": module_instance_id, "module_name": module_data.name ,"enabled": true})
 				
-				
+
 	ship_stats.update_mass(module_data.stats["mass"])
+	if module_data.stats["fuelcapacity"] != 0:
+		ship_stats.update_fuelcap(module_data.stats["fuelcapacity"])
 
 
 
@@ -116,6 +118,8 @@ func remove_module(position):
 	
 	ship_stats.remove_module(instance_to_remove)
 	ship_stats.update_mass(-tile_to_remove.module_data.stats["mass"])
+	ship_stats.update_fuelcap(-tile_to_remove.module_data.stats["fuelcapacity"])
+	
 	return_resources(tile_to_remove.module_data.costs)
 	
 	remove_from_module_list(tile_to_remove["id"])
