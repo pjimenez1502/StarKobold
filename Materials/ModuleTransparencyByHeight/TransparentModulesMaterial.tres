@@ -1,0 +1,10 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://bxh4cuoxoarkv"]
+
+[ext_resource type="Shader" uid="uid://cnof787wxpb34" path="res://Materials/ModuleTransparencyByHeight/new_shader.tres" id="1_450w1"]
+[ext_resource type="Texture2D" uid="uid://ddkyh83pkt2t3" path="res://Assets/Texture/modules_textures.png" id="2_c60ke"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_450w1")
+shader_parameter/FloatParameter = 1.0
+shader_parameter/Texture2DParameter = ExtResource("2_c60ke")

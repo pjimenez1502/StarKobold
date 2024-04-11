@@ -1,7 +1,7 @@
 [gd_scene load_steps=24 format=3 uid="uid://be8ulv2ooh3ob"]
 
 [ext_resource type="Texture2D" uid="uid://bufftacrj3ala" path="res://Assets/UI/test.png" id="1_t60kk"]
-[ext_resource type="Shader" path="res://Shaders/ChromaticAberration.gdshader" id="1_vumaj"]
+[ext_resource type="Shader" path="res://Materials/ChromaticAberration.gdshader" id="1_vumaj"]
 [ext_resource type="Script" path="res://Scripts/UI/Overlays/KoboldUI.gd" id="4_ekkll"]
 [ext_resource type="Texture2D" uid="uid://svl1x5wxhxc5" path="res://Assets/UI/Icons/kobold.png" id="5_kapuh"]
 [ext_resource type="Texture2D" uid="uid://e4s7gp3snmal" path="res://Assets/UI/Buttons/edit.png" id="6_8khoj"]
@@ -112,7 +112,6 @@ offset_bottom = 80.0
 texture = ExtResource("5_kapuh")
 
 [node name="Ship Overlay" type="Control" parent="Game Overlays"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -158,6 +157,7 @@ offset_bottom = 80.0
 texture = ExtResource("8_5obta")
 
 [node name="Edit Overlay" type="Control" parent="Game Overlays"]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

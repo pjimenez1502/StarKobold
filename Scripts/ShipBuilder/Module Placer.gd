@@ -1,6 +1,6 @@
 extends Node
 
-const PLACEMENT_CHECK_MAT = preload("res://Shaders/Placement_Check_Mat.tres")
+const PLACEMENT_CHECK_MAT = preload("res://Materials/PlacementChecker/Placement_Check_Mat.tres")
 #@export var MODULES_DATA : Array[Resource]
 
 @onready var ship_builder = $"../Ship Builder"
